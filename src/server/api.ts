@@ -1,3 +1,8 @@
 import { remultExpress } from "remult/remult-express"
 
-export const api = remultExpress()
+import { Hive } from "src/shared/hive"
+
+export const api = remultExpress({
+    entities: [Hive],
+    admin: true
+  })

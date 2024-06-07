@@ -1,0 +1,10 @@
+<h1>Add new hive</h1>
+<form submit="addHive()">
+    <input placeholder="Hive name"
+        [(ngModel)]="hiveName"
+        name="HiveName"/>
+    <input placeholder="Hive Origin"
+        [(ngModel)]="hiveOrigin"
+        name="HiveOrigin">
+    <button (click)="addHive()">Add</button>
+</form>

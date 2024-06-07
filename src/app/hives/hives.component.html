@@ -1,0 +1,22 @@
+<h2>Hives</h2>
+    <div>
+        <button [routerLink]="'add'">Add Hive</button>
+        <table>
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>Origin</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let h of hives;">
+                    <th>{{h.id}}</th>
+                    <th>{{h.name}}</th>
+                    <th>{{h.origin}}</th>
+                    <th><button (click)="viewHive(h.id)">View</button></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
