@@ -8,7 +8,10 @@
     "dev": "ng serve --proxy-config proxy.conf.json --open",
     "dev-node": "tsx watch src/server",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:server": "tsc -p tsconfig.server.json",
+    "start:server": "nodemon --watch src/server --exec ts-node src/server/index.ts",
+    "start:dev": "concurrently \"npm run start\" \"npm run start:server\""
   },
   "private": true,
   "dependencies": {
