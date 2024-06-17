@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./hives.component.css']
 })
 export class HivesComponent implements OnInit {
-  private _router: Router = Inject(Router)
+  constructor(private router: Router) { } 
   hiveRepo = remult.repo(Hive);
   hives: Hive[] = [];
   ngOnInit() {
@@ -19,9 +19,13 @@ export class HivesComponent implements OnInit {
   }
 
   viewHive(id:any){
-    let link:string = '/view/'+id;
-    console.log(link);
-    this._router.navigate([link]);
+    let link:string = '/hive/'+id;
+    this.router.navigate([link]);
+  }
+
+  editHive(id:any){
+    let link:string = '/hive/edit/'+id;
+    this.router.navigate([link]);
   }
 
 }

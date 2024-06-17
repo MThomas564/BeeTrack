@@ -1,0 +1,9 @@
+.checkbox__wrapper{
+    display: flex;
+    flex-wrap:wrap;
+    gap:30px;
+    margin:20px 0;
+}
+.checkbox__wrapper>div{
+    min-width:100px;
+}

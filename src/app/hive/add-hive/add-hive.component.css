@@ -1,0 +1,7 @@
+:host >>> .hive-form {
+    width: 30%;
+  }
+  
+  :host >>> .p-inputtext {
+    width: 100%;
+  }

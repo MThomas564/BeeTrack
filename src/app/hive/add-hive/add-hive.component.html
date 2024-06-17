@@ -1,0 +1,29 @@
+<h2>Add new hive</h2>
+<form [formGroup]="hiveForm" (ngSubmit)="addHive()">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+            <label for="name">Hive Name</label>
+            <input id="name" type="text" pInputText formControlName="name" />
+            <div *ngIf="hiveForm.controls['name'].invalid && hiveForm.controls['name'].touched" class="p-error">
+                Hive Name is required.
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <label for="origin">Hive Origin</label>
+            <input id="origin" type="text" pInputText formControlName="origin" />
+            <div *ngIf="hiveForm.controls['origin'].invalid && hiveForm.controls['origin'].touched" class="p-error">
+                Hive Origin is required.
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <label for="queenYear">Year of Queen</label>
+            <input id="queenYear" type="email" pInputText formControlName="queenYear" />
+            <div *ngIf="hiveForm.controls['queenYear'].invalid && hiveForm.controls['queenYear'].touched" class="p-error">
+                Year of Queen is required.
+            </div>
+        </div>
+        <div class="p-field p-col-12">
+            <button pButton type="submit" label="Submit" class="p-mt-2" [disabled]="hiveForm.invalid"></button>
+        </div>
+    </div>
+</form>

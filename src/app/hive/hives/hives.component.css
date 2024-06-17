@@ -1,0 +1,24 @@
+.p-buttonset {
+    display: flex;
+  }
+  
+  .p-buttonset button {
+    /* margin-right: 5px; */
+  }
+  
+  .p-buttonset .p-button-transparent {
+    background-color: transparent;
+    border-color: #F59e0b;
+    color:#f59e0b;
+  }
+
+  .p-button-transparent:hover {
+    color: #d97706;
+  }
+
+  .p-button {
+    background-color:#F59e0b;
+  }
+  .p-button:hover {
+    background-color: #d97706;
+  }

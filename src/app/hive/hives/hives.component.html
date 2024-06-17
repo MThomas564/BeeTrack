@@ -1,0 +1,30 @@
+<div>
+    <div style="width: 100%; display: flex; justify-content: space-between; align-items: baseline;">
+        <h2>Hives</h2>
+        <p-button [routerLink]="'add'">Add Hive</p-button>
+    </div>
+    <p-table [value]="hives" [responsiveLayout]="'scroll'">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <!-- <th>Origin</th>
+                <th>Year of queen</th> -->
+                <th>Actions</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hive>
+            <tr>
+                <td>{{hive.name}}</td>
+                <!-- <td>{{hive.origin}}</td>
+                <td>{{hive.yearOfQueen}}</td> -->
+                <td>
+                    <div class="p-buttonset">
+                        <button pButton type="button" icon="pi pi-eye" class="p-button-transparent" (click)="viewHive(hive.id)"></button>
+                        <button pButton type="button" icon="pi pi-pencil" class="" (click)="editHive(hive.id)"></button>
+                      </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>

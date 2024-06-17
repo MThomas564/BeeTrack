@@ -1,0 +1,75 @@
+<h2>Inspection</h2>
+<style>
+    .p_element {
+        margin: 0 0.5rem;
+    }
+</style>
+<form [formGroup]="inspectionForm" (ngSubmit)="submit()">
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+            <label for="date" class="block">Inspection Date</label>
+            <p-calendar formControlName="date" />
+        </div>
+
+        <div class="p-field p-col-12 p-md-6">
+            <label for="note">General Notes</label>
+            <textarea rows="5" cols="30" pInputTextarea formControlName="note">
+</textarea>
+        </div>
+    </div>
+    <hr />
+    <h3>Hives</h3>
+    <ng-container formArrayName="hiveNotes">
+        <div class="p-fluid p-formgrid p-grid">
+            <ng-container *ngFor="let hiveForm of hiveForms.controls; let index = index;">
+                <div [formGroupName]="index">
+                    <div class="grid formgrid">
+                        <div class="field col-12 sm:col-6 md:col-8">
+                            <p-dropdown formControlName="hive" [options]="hives" optionLabel="name"
+                                placeholder="Select a Hive" />
+                        </div>
+                        <div class="field col-12 sm:col-6 md:col-2">
+                            <p-button (onClick)="removeHiveNote(index)">Remove Hive Note</p-button>
+                        </div>
+                    </div>
+                    <div class="checkbox__wrapper flex gap-2 align-items-center">
+                    <div class="flex align-items-center gap-1">
+                        <p-checkbox formControlName="queen" value="queen" inputId="queen" />
+                        <label for="queen">Queen seen</label>
+                    </div>
+                    <div class="flex align-items-center gap-1">
+                        <p-checkbox formControlName="eggs" value="eggs" inputId="eggs" />
+                        <label for="eggs">Eggs seen</label>
+                    </div>
+                    <div class="flex align-items-center gap-1">
+                        <p-checkbox formControlName="bias" value="bias" inputId="bias" />
+                        <label for="bias">Bias?</label>
+                    </div>
+                    <div class="flex align-items-center gap-1">
+                        <p-checkbox formControlName="swarmCells" value="swarmCells" inputId="swarmCells" />
+                        <label for="swarmCells">Swarm Cells</label>
+                    </div>
+                    <div class="flex align-items-center gap-1">
+                        <p-checkbox formControlName="supercedureCells" value="supercedureCells"
+                            inputId="supercedureCells" />
+                        <label for="supercedureCells">Supercedure Cells</label>
+                    </div>
+                    <div class="flex align-items-center gap-1 ">
+                        <p-checkbox formControlName="noEggsOrBrood" value="noEggsOrBrood" inputId="noEggsOrBrood" />
+                        <label for="noEggsOrBrood">No Eggs or Brood</label>
+                    </div>
+                    </div>
+                    <div class="flex align-items-center gap-1 field">
+                        <label for="hiveNote">Note</label>
+                        <textarea rows="2" cols="30" pInputTextarea formControlName="notes"></textarea>
+                    </div>
+                    
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+    <div style="display: flex;gap:1em;margin:1rem 0;">
+        <p-button (onClick)="addHiveNote()">Add Hive Note</p-button>
+        <button pButton type="submit" label="Submit" [disabled]="inspectionForm.invalid"></button>
+    </div>
+</form>

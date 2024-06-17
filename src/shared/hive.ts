@@ -1,5 +1,6 @@
 import { Entity, Fields, Relations, Validators } from "remult";
 import { Inspection } from "./inspection";
+import { InspectionNote } from "./inspectionNote";
 
 @Entity('hives', {
     allowApiCrud: true,
@@ -19,6 +20,9 @@ export class Hive {
     @Fields.createdAt()
     createdDate?: Date
 
-    @Relations.toMany(() => Inspection)
-    inspections?: Inspection[]
+    @Fields.string()
+    yearOfQueen = ''
+
+    @Relations.toMany(() => InspectionNote, {defaultIncluded: true})
+    inspections?: InspectionNote[]
 }
