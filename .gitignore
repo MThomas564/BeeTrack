@@ -2,6 +2,7 @@
 
 docker-compose.yml
 
+/db
 # Compiled output
 /dist
 /tmp
