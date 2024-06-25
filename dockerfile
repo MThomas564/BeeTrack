@@ -6,6 +6,9 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
+
 # Install dependencies
 RUN npm install
 
@@ -40,16 +43,18 @@ FROM node:18 AS runtime
 
 WORKDIR /app
 
-# Install express and remult
+# Copy package.json and package-lock.json
 COPY package*.json ./
-RUN npm install
-RUN npm install remult express
 
-# Copy the built Angular app from the first stage
+# Install dependencies for runtime
+RUN npm install --only=production
+
+# Copy the built Angular app and server files from the build stages
 COPY --from=build /app/dist /app/dist
+COPY --from=server-build /app/dist/server /app/dist
 
 # Expose port
 EXPOSE 3000
 
 # Start the server
-CMD ["node", "./dist/server/server/index.js"]
+CMD ["node", "./dist/server/index.js"]

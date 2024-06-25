@@ -10,9 +10,7 @@
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@shared/*": ["src/shared/*"]
-    },
+    
   },
   "include": ["src/server/*", "src/shared/*"]
 }
