@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgresDb:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: beeUser       
+      POSTGRES_PASSWORD: dbPassword   
+      POSTGRES_DB: beeTrack           
+    ports:
+      - '0.0.0.0:5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+        - POSTGRES_HOST=postgresDb
+        - POSTGRES_PORT=5432
+        - POSTGRES_USER=beeUser
+        - POSTGRES_PASSWORD=dbPassword
+        - POSTGRES_DB=beeTrack
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgresDb
+
+volumes:
+  postgres-data:
