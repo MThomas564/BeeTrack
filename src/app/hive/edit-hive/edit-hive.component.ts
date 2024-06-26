@@ -20,7 +20,8 @@ export class EditHiveComponent implements OnInit {
   hiveForm = this.fb.group({
     name: [''],
     origin: [''],
-    queenYear: ['']
+    queenYear: [''],
+    archived: [false]
   })
 
   constructor(private route: ActivatedRoute, private _location: Location) {}
@@ -33,6 +34,7 @@ export class EditHiveComponent implements OnInit {
       this.hiveForm.controls['name'].setValue(this.hive.name)
       this.hiveForm.controls['origin'].setValue(this.hive.origin)
       this.hiveForm.controls['queenYear'].setValue(this.hive.yearOfQueen)
+      this.hiveForm.controls['archived'].setValue(this.hive.archived);
     }
   }
 
@@ -42,6 +44,7 @@ export class EditHiveComponent implements OnInit {
         this.hive.name = this.hiveForm.controls['name'].value as string;
         this.hive.origin = this.hiveForm.controls['origin'].value as string;
         this.hive.yearOfQueen = this.hiveForm.controls['queenYear'].value as string;
+        this.hive.archived = this.hiveForm.controls['archived'].value as boolean;
         this.hiveRepo.save(this.hive);
         this._location.back();
       }
