@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "apiary-management": {
+    "bee-track": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apiary-management",
+            "outputPath": "dist/bee-track",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "apiary-management:build:production"
+              "buildTarget": "bee-track:build:production"
             },
             "development": {
-              "buildTarget": "apiary-management:build:development"
+              "buildTarget": "bee-track:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +75,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "apiary-management:build"
+            "buildTarget": "bee-track:build"
           }
         },
         "test": {

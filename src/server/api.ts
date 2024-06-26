@@ -16,9 +16,9 @@ const conString = `postgres://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`
 console.log(conString);
 
 export const api = remultExpress({
-  dataProvider: createPostgresDataProvider({
+  dataProvider: dbHost ? createPostgresDataProvider({
     connectionString: conString
-  }),
+  }): undefined,
     entities: [Hive, Inspection, InspectionNote],
     admin: true
   })
