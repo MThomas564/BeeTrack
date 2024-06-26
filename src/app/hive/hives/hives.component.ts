@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HivesComponent implements OnInit {
   constructor(private router: Router) { } 
+  showingAll: boolean = true;
   hiveRepo = remult.repo(Hive);
   hives: Hive[] = [];
   ngOnInit() {
@@ -30,13 +31,16 @@ export class HivesComponent implements OnInit {
 
   viewAll(){
     this.hiveRepo.find().then((items) => (this.hives = items))
+    this.showingAll = true;
   }
 
   viewArchived(){
     this.hiveRepo.find({where: {archived: true},}).then((items) => (this.hives= items))
+    this.showingAll = false;
   }
 
   viewActive(){
     this.hiveRepo.find({where: {archived: false},}).then((items) => (this.hives= items))
+    this.showingAll = false;
   }
 }

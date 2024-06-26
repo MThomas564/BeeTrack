@@ -16,6 +16,7 @@
                 <th>Name</th>
                 <!-- <th>Origin</th>
                 <th>Year of queen</th> -->
+                <th *ngIf="showingAll">Archived</th>
                 <th>Actions</th>
             </tr>
         </ng-template>
@@ -24,6 +25,7 @@
                 <td>{{hive.name}}</td>
                 <!-- <td>{{hive.origin}}</td>
                 <td>{{hive.yearOfQueen}}</td> -->
+                <td *ngIf="showingAll">{{hive.archived}}</td>
                 <td>
                     <div class="p-buttonset">
                         <button pButton type="button" icon="pi pi-eye" class="p-button-transparent" (click)="viewHive(hive.id)"></button>
