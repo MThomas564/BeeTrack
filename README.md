@@ -58,3 +58,6 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 This project is licensed under the MIT License.
+
+## Attributions
+- Logo attributed to [vecteezy](https://www.vecteezy.com/free-png/bee)
