@@ -23,6 +23,9 @@ export class Hive {
     @Fields.string()
     yearOfQueen = ''
 
+    @Fields.boolean()
+    archived = false
+
     @Relations.toMany(() => InspectionNote, {defaultIncluded: true})
     inspections?: InspectionNote[]
 }

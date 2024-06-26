@@ -4,6 +4,13 @@
         <p-button [routerLink]="'add'">Add Hive</p-button>
     </div>
     <p-table [value]="hives" [responsiveLayout]="'scroll'">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <p-button (click)="viewAll()" size="small">View all</p-button>
+                <p-button (click)="viewActive()" size="small">View active</p-button>
+                <p-button (click)="viewArchived()" size="small">View archived</p-button>
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th>Name</th>

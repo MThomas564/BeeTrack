@@ -28,4 +28,15 @@ export class HivesComponent implements OnInit {
     this.router.navigate([link]);
   }
 
+  viewAll(){
+    this.hiveRepo.find().then((items) => (this.hives = items))
+  }
+
+  viewArchived(){
+    this.hiveRepo.find({where: {archived: true},}).then((items) => (this.hives= items))
+  }
+
+  viewActive(){
+    this.hiveRepo.find({where: {archived: false},}).then((items) => (this.hives= items))
+  }
 }
