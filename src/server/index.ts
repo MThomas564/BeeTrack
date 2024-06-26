@@ -3,8 +3,22 @@ import express from 'express';
 import path from 'path';
 import { remultExpress } from 'remult/remult-express';
 import { api } from './api';
+import helmet from "helmet"
+import compression from "compression"
 
 const app = express();
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'script-src-attr': ["'unsafe-inline'"],
+      },
+    },
+  })
+)
+app.use(compression())
+
 // Serve static files from the Angular app
 app.use(express.static(path.join(__dirname, '../bee-track')));
 

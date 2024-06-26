@@ -1,6 +1,7 @@
 # BeeTrack
 BeeTrack is a web application designed to assist apiary managers in efficiently managing their apiaries, keeping track of hives and inspections seamlessly.
 
+<img src="./src/assets/logo.png" width="200" height="200">
 
 ## Features
 Hive Management: Maintain a comprehensive list of hives within your apiary.
@@ -58,3 +59,6 @@ Contributions are welcome! Please follow these steps:
 
 ## License
 This project is licensed under the MIT License.
+
+## Attributions
+- Logo attributed to [vecteezy](https://www.vecteezy.com/free-png/bee)

@@ -12,6 +12,10 @@
         <label for="queenYear">Year of Queen</label>
         <input id="queenYear" type="email" pInputText formControlName="queenYear" />
     </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="archived">Archived</label>
+        <p-checkbox binary="true" [formControl]="hiveForm.controls['archived']"></p-checkbox>
+    </div>
     <div class="p-field p-col-12">
         <button pButton type="submit" label="Submit" class="p-mt-2" ></button>
     </div>

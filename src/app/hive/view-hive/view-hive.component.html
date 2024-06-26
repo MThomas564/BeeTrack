@@ -11,6 +11,10 @@
         <label for="queenYear">Year of Queen</label>
         <input id="queenYear" type="email" pInputText [(ngModel)]="hive.yearOfQueen" readonly />
     </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="archived">Archived</label>
+        <p-checkbox binary="true" [(ngModel)]="hive.archived"></p-checkbox>
+    </div>
     <button pButton label="Edit" class="p-mt-2" (click)="editHive()"></button>
 
 </div>
