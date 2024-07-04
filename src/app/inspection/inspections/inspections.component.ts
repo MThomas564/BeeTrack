@@ -14,7 +14,7 @@ export class InspectionsComponent implements OnInit {
   inspectionRepo = remult.repo(Inspection)
 
   async ngOnInit() {
-    this.inspections = await this.inspectionRepo.find().then((items) => this.inspections = items)
+    this.inspections = await this.inspectionRepo.find({orderBy: {inspectionDate: "desc"}}).then((items) => this.inspections = items)
     console.log(this.inspections)
   }
 
