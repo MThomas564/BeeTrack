@@ -8,15 +8,15 @@ import compression from "compression"
 
 const app = express();
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        'script-src-attr': ["'unsafe-inline'"],
-      },
-    },
-  })
-)
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: {
+//       directives: {
+//         'script-src-attr': ["'unsafe-inline'"],
+//       },
+//     },
+//   })
+// )
 app.use(compression())
 
 // Serve static files from the Angular app
