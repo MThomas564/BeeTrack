@@ -29,7 +29,31 @@
     <ng-template pTemplate="body" let-note>
         <tr>
             <td>{{note.inspection.inspectionDate | date: 'longDate'}}</td>
-            <td>{{note.notes}}</td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Queen</th>
+                        <th>Eggs</th>
+                        <th>Bias</th>
+                    </tr>
+                    <tr>
+                        <td>{{note.queen ? 'Yes' : 'No'}}</td>
+                        <td>{{note.eggs ? 'Yes' : 'No'}}</td>
+                        <td>{{note.bias ? 'Yes' : 'No'}}</td>
+                    </tr>
+                    <tr>
+                        <th>No eggs or brood</th>
+                        <th>Swarm cells</th>
+                        <th>Supercedure Cells</th>
+                    </tr>
+                    <tr>
+                        <td>{{note.noEggsOrBrood ? 'Yes' : 'No'}}</td>
+                        <td>{{note.swarmCells ? 'Yes' : 'No'}}</td>
+                        <td>{{note.supercedureCells ? 'Yes' : 'No'}}</td>
+                    </tr>
+                </table>
+                {{note.notes}}
+            </td>
         </tr>
     </ng-template>
 </p-table>

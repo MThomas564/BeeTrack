@@ -58,12 +58,12 @@ export class AddInspectionComponent implements OnInit {
     const hnForm = this.fb.group({
       hive: [''],
       notes: [''],
-      queen: [false],
-      eggs: [false],
-      bias: [false],
-      swarmCells: [false],
-      supercedureCells: [false],
-      noEggsOrBrood: [false]
+      queen: [],
+      eggs: [],
+      bias: [],
+      swarmCells: [],
+      supercedureCells: [],
+      noEggsOrBrood: []
     });
     this.hiveForms.push(hnForm)
   }

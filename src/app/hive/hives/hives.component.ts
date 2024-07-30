@@ -16,7 +16,7 @@ export class HivesComponent implements OnInit {
   hiveRepo = remult.repo(Hive);
   hives: Hive[] = [];
   ngOnInit() {
-    this.hiveRepo.find().then((items) => (this.hives = items))
+  this.viewActive();
   }
 
   viewHive(id:any){
