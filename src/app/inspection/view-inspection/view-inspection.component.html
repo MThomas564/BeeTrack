@@ -16,7 +16,31 @@
     <ng-template pTemplate="body" let-inspect>
         <tr>
             <td>{{inspect.hive.name}}</td>
-            <td>{{inspect.notes}}</td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Queen</th>
+                        <th>Eggs</th>
+                        <th>Bias</th>
+                    </tr>
+                    <tr>
+                        <td>{{inspect.queen ? 'Yes' : 'No'}}</td>
+                        <td>{{inspect.eggs ? 'Yes' : 'No'}}</td>
+                        <td>{{inspect.bias ? 'Yes' : 'No'}}</td>
+                    </tr>
+                    <tr>
+                        <th>No eggs or brood</th>
+                        <th>Swarm cells</th>
+                        <th>Supercedure Cells</th>
+                    </tr>
+                    <tr>
+                        <td>{{inspect.noEggsOrBrood ? 'Yes' : 'No'}}</td>
+                        <td>{{inspect.swarmCells ? 'Yes' : 'No'}}</td>
+                        <td>{{inspect.supercedureCells ? 'Yes' : 'No'}}</td>
+                    </tr>
+                </table>
+                {{inspect.notes}}
+            </td>
         </tr>
     </ng-template>
 </p-table>
