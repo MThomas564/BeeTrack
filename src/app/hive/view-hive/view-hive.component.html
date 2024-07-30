@@ -30,28 +30,12 @@
         <tr>
             <td>{{note.inspection.inspectionDate | date: 'longDate'}}</td>
             <td>
-                <table>
-                    <tr>
-                        <th>Queen</th>
-                        <th>Eggs</th>
-                        <th>Bias</th>
-                    </tr>
-                    <tr>
-                        <td>{{note.queen ? 'Yes' : 'No'}}</td>
-                        <td>{{note.eggs ? 'Yes' : 'No'}}</td>
-                        <td>{{note.bias ? 'Yes' : 'No'}}</td>
-                    </tr>
-                    <tr>
-                        <th>No eggs or brood</th>
-                        <th>Swarm cells</th>
-                        <th>Supercedure Cells</th>
-                    </tr>
-                    <tr>
-                        <td>{{note.noEggsOrBrood ? 'Yes' : 'No'}}</td>
-                        <td>{{note.swarmCells ? 'Yes' : 'No'}}</td>
-                        <td>{{note.supercedureCells ? 'Yes' : 'No'}}</td>
-                    </tr>
-                </table>
+                <app-status-tag name="Queen" [value]="note.queen"></app-status-tag>
+                <app-status-tag name="Eggs" [value]="note.eggs"></app-status-tag>
+                <app-status-tag name="Bias" [value]="note.bias"></app-status-tag>
+                <app-status-tag name="No Eggs or Brood" [value]="note.noEggsOrBrood"></app-status-tag>
+                <app-status-tag name="Swarm Cells" [value]="note.swarmCells"></app-status-tag>
+                <app-status-tag name="Supercedure Cells" [value]="note.supercedureCells"></app-status-tag> 
                 {{note.notes}}
             </td>
         </tr>

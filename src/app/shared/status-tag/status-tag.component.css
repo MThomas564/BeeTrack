@@ -1,0 +1,11 @@
+.status-tag {
+  display: flex;
+  align-items: center;
+}
+.name {
+  margin-right: 8px;
+  font-weight: bold;
+}
+.value {
+  font-size: 1.2em;
+}

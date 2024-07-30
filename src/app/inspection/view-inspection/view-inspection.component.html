@@ -17,28 +17,13 @@
         <tr>
             <td>{{inspect.hive.name}}</td>
             <td>
-                <table>
-                    <tr>
-                        <th>Queen</th>
-                        <th>Eggs</th>
-                        <th>Bias</th>
-                    </tr>
-                    <tr>
-                        <td>{{inspect.queen ? 'Yes' : 'No'}}</td>
-                        <td>{{inspect.eggs ? 'Yes' : 'No'}}</td>
-                        <td>{{inspect.bias ? 'Yes' : 'No'}}</td>
-                    </tr>
-                    <tr>
-                        <th>No eggs or brood</th>
-                        <th>Swarm cells</th>
-                        <th>Supercedure Cells</th>
-                    </tr>
-                    <tr>
-                        <td>{{inspect.noEggsOrBrood ? 'Yes' : 'No'}}</td>
-                        <td>{{inspect.swarmCells ? 'Yes' : 'No'}}</td>
-                        <td>{{inspect.supercedureCells ? 'Yes' : 'No'}}</td>
-                    </tr>
-                </table>
+                <app-status-tag name="Queen" [value]="inspect.queen"></app-status-tag>
+                <app-status-tag name="Eggs" [value]="inspect.eggs"></app-status-tag>
+                <app-status-tag name="Bias" [value]="inspect.bias"></app-status-tag>
+                <app-status-tag name="No Eggs or Brood" [value]="inspect.noEggsOrBrood"></app-status-tag>
+                <app-status-tag name="Swarm Cells" [value]="inspect.swarmCells"></app-status-tag>
+                <app-status-tag name="Supercedure Cells" [value]="inspect.supercedureCells"></app-status-tag>
+                    
                 {{inspect.notes}}
             </td>
         </tr>

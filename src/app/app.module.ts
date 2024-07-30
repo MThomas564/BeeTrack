@@ -29,6 +29,7 @@ import { AddInspectionComponent } from './inspection/add-inspection/add-inspecti
 import { ViewInspectionComponent } from './inspection/view-inspection/view-inspection.component';
 import { CommonModule } from '@angular/common';
 import { EditHiveComponent } from './hive/edit-hive/edit-hive.component';
+import { StatusTagComponent } from './shared/status-tag/status-tag.component';
 
 const routes: Routes = [ 
   { path: '', component: HivesComponent } // Home page route 
@@ -50,6 +51,7 @@ const routes: Routes = [
     , AddInspectionComponent
     , ViewInspectionComponent
     , EditHiveComponent
+    , StatusTagComponent
   ],
   imports: [
     BrowserModule
