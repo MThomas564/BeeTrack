@@ -30,24 +30,24 @@ export class ViewInspectionComponent implements OnInit {
     }
   }
 
-  confirmDelete(event: Event) {
-    this.confirmationService.confirm({
-      target: event.target as EventTarget,
-      message: 'Are you sure you want to delete this inspection?',
-      header: 'Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      acceptButtonStyleClass: "p-button-danger p-button-text",
-      rejectButtonStyleClass: "p-button-text p-button-text",
-      accept: () => {
-        this.delete();
-      }
-    })
-  }
+  // confirmDelete(event: Event) {
+  //   this.confirmationService.confirm({
+  //     target: event.target as EventTarget,
+  //     message: 'Are you sure you want to delete this inspection?',
+  //     header: 'Confirmation',
+  //     icon: 'pi pi-exclamation-triangle',
+  //     acceptButtonStyleClass: "p-button-danger p-button-text",
+  //     rejectButtonStyleClass: "p-button-text p-button-text",
+  //     accept: () => {
+  //       this.delete();
+  //     }
+  //   })
+  // }
 
-  private async delete() {
-    await this.inspectionRepo.delete(this.id,);
-    this._router.navigateByUrl('inspections')
-  }
+  // private async delete() {
+  //   await this.inspectionRepo.delete(this.id,);
+  //   this._router.navigateByUrl('inspections')
+  // }
 
 }
 
