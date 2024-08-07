@@ -1,4 +1,7 @@
 <h2>Inspection date: {{inspection.inspectionDate}}</h2>
+
+<p-confirmDialog />
+
 <span>
     <Label>General Notes:</Label>
     <p>{{inspection.notes}}</p>
@@ -6,6 +9,28 @@
 
 <h3>Hive Notes:</h3>
 
+
+<div *ngFor="let inspect of inspectionNotes">
+<p-card header="{{inspect.hive.name}}">
+    <div>
+        <p>
+            <strong>Notes: </strong>
+            {{inspect.notes}}
+        </p>
+         <app-status-tag name="Queen" [value]="inspect.queen"></app-status-tag>
+                <app-status-tag name="Eggs" [value]="inspect.eggs"></app-status-tag>
+                <app-status-tag name="Bias" [value]="inspect.bias"></app-status-tag>
+                <app-status-tag name="No Eggs or Brood" [value]="inspect.noEggsOrBrood"></app-status-tag>
+                <app-status-tag name="Swarm Cells" [value]="inspect.swarmCells"></app-status-tag>
+                <app-status-tag name="Supercedure Cells" [value]="inspect.supercedureCells"></app-status-tag>
+    </div>
+</p-card>
+</div>
+
+
+<p-button (onClick)="confirmDelete($event)" label="delete" severity="danger"/>
+
+<!-- 
 <p-table [value]="inspectionNotes" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
         <tr>
@@ -28,4 +53,4 @@
             </td>
         </tr>
     </ng-template>
-</p-table>
+</p-table> -->
