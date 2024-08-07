@@ -3,7 +3,7 @@ name: Docker Build and Release
 on:
   push:
     branches:
-      - release  # Change this to your main branch name if different
+      - main  # Change this to your main branch name if different
 
 jobs:
   build-and-push:
