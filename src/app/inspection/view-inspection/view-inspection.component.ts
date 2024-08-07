@@ -45,7 +45,7 @@ export class ViewInspectionComponent implements OnInit {
   }
 
   private async delete() {
-    await this.inspectionRepo.delete(this.id);
+    await this.inspectionRepo.delete(this.id,);
     this._router.navigateByUrl('inspections')
   }
 

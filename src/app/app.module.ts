@@ -32,6 +32,7 @@ import { CommonModule } from '@angular/common';
 import { EditHiveComponent } from './hive/edit-hive/edit-hive.component';
 import { StatusTagComponent } from './shared/status-tag/status-tag.component';
 import { ConfirmationService } from 'primeng/api';
+import { DateFormatPipe } from './shared/date pipe/date-format.pipe';
 
 const routes: Routes = [ 
   { path: '', component: HivesComponent } // Home page route 
@@ -54,6 +55,7 @@ const routes: Routes = [
     , ViewInspectionComponent
     , EditHiveComponent
     , StatusTagComponent
+    , DateFormatPipe
   ],
   imports: [
     BrowserModule
