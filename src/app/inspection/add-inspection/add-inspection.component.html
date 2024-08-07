@@ -34,29 +34,29 @@
                     </div>
                     <div class="checkbox__wrapper flex gap-2 align-items-center">
                         <div class="flex align-items-center gap-1">
-                            <input type="checkbox" formControlName="queen" id="queen" />
-                            <label for="queen">Queen seen</label>
+                            <input type="checkbox" formControlName="queen" id="queen-{{index}}" />
+                            <label for="queen-{{index}}">Queen seen</label>
                         </div>
                         <div class="flex align-items-center gap-1">
-                            <input type="checkbox" formControlName="eggs" id="eggs" />
-                            <label for="eggs">Eggs seen</label>
+                            <input type="checkbox" formControlName="eggs" id="eggs-{{index}}" />
+                            <label for="eggs-{{index}}">Eggs seen</label>
                         </div>
                         <div class="flex align-items-center gap-1">
-                            <input type="checkbox" formControlName="bias" id="bias" />
-                            <label for="bias">Bias?</label>
+                            <input type="checkbox" formControlName="bias" id="bias-{{index}}" />
+                            <label for="bias-{{index}}">Bias?</label>
                         </div>
                         <div class="flex align-items-center gap-1">
-                            <input type="checkbox" formControlName="swarmCells" id="swarmCells" />
-                            <label for="swarmCells">Swarm Cells</label>
+                            <input type="checkbox" formControlName="swarmCells" id="swarmCells-{{index}}" />
+                            <label for="swarmCells-{{index}}">Swarm Cells</label>
                         </div>
                         <div class="flex align-items-center gap-1">
-                            <input type="checkbox" formControlName="supercedureCells" id="supercedureCells" />
-                            <label for="supercedureCells">Supercedure Cells</label>
+                            <input type="checkbox" formControlName="supercedureCells" id="supercedureCells-{{index}}" />
+                            <label for="supercedureCells-{{index}}">Supercedure Cells</label>
                         </div>
                         <div class="flex align-items-center gap-1 ">
                             <input type="checkbox" formControlName="noEggsOrBrood" value="noEggsOrBrood"
-                                id="noEggsOrBrood" />
-                            <label for="noEggsOrBrood">No Eggs or Brood</label>
+                                id="noEggsOrBrood-{{index}}" />
+                            <label for="noEggsOrBrood-{{index}}">No Eggs or Brood</label>
                         </div>
                     </div>
                     <div class="flex align-items-center gap-1 field">

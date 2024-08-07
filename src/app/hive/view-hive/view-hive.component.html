@@ -30,13 +30,16 @@
         <tr>
             <td>{{note.inspection.inspectionDate | date: 'longDate'}}</td>
             <td>
-                <app-status-tag name="Queen" [value]="note.queen"></app-status-tag>
-                <app-status-tag name="Eggs" [value]="note.eggs"></app-status-tag>
-                <app-status-tag name="Bias" [value]="note.bias"></app-status-tag>
-                <app-status-tag name="No Eggs or Brood" [value]="note.noEggsOrBrood"></app-status-tag>
-                <app-status-tag name="Swarm Cells" [value]="note.swarmCells"></app-status-tag>
-                <app-status-tag name="Supercedure Cells" [value]="note.supercedureCells"></app-status-tag> 
-                {{note.notes}}
+                <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                    <p-tag value="Queen" [severity]="note.queen? 'success' : 'warning' " />
+                    <p-tag value="Eggs" [severity]="note.eggs? 'success' : 'danger'" />
+                    <p-tag value="Bias" [severity]="note.bias ? 'success' : 'warning'" />
+                    <p-tag value="No Eggs Or Brood" [severity]="note.noEggsOrBrood? 'danger':'success'" />
+                    <p-tag value="Swarm Cells" [severity]="note.swarmCells ? 'danger' :'success'"/>
+                    <p-tag value="Supercedure Cells" [severity]="note.supercedureCells? 'danger':'success'"/>
+                </div>
+               
+               <strong>Notes:</strong> {{note.notes}}
             </td>
         </tr>
     </ng-template>

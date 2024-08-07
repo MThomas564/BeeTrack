@@ -14,7 +14,7 @@ import { InspectionNote } from 'src/shared/inspectionNote';
 export class AddInspectionComponent implements OnInit {
   private _router: Router = inject(Router)
   async ngOnInit(): Promise<void> {
-   this.hives = await this.hiveRepo.find().then((items)=> this.hives = items);
+   this.hives = await this.hiveRepo.find({where: {archived: false}}).then((items)=> this.hives = items);
    this.addHiveNote();
   }
 

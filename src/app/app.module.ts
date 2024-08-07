@@ -15,6 +15,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { DragDropModule } from 'primeng/dragdrop'
 import { CheckboxModule } from 'primeng/checkbox';
+import{ ConfirmDialogModule} from 'primeng/confirmdialog'
 
 
 import { ReactiveFormsModule } from '@angular/forms'; 
@@ -30,7 +31,9 @@ import { ViewInspectionComponent } from './inspection/view-inspection/view-inspe
 import { CommonModule } from '@angular/common';
 import { EditHiveComponent } from './hive/edit-hive/edit-hive.component';
 import { StatusTagComponent } from './shared/status-tag/status-tag.component';
+import { ConfirmationService } from 'primeng/api';
 import { DateFormatPipe } from './shared/date pipe/date-format.pipe';
+import { TagModule} from 'primeng/tag'
 
 const routes: Routes = [ 
   { path: '', component: HivesComponent } // Home page route 
@@ -73,8 +76,10 @@ const routes: Routes = [
     , CardModule
     , DragDropModule
     , CheckboxModule
+    , ConfirmDialogModule
+    , TagModule
      ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
