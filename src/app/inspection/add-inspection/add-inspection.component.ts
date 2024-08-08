@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data service/data-service.service';
+import { DataService } from 'src/app/services/data/data.service';
 import { Hive } from 'src/shared/hive';
 import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';

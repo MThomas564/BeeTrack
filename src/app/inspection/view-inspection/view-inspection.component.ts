@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
-import { DataService } from 'src/app/services/data service/data-service.service';
+import { DataService } from 'src/app/services/data/data.service';
 import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';
 

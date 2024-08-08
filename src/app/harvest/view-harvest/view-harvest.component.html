@@ -1,0 +1,44 @@
+<h2>Harvest</h2>
+
+<div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12 p-md-6">
+        <label for="collectedDate">Collected Date</label>
+        <input pInputText readonly [(ngModel)]="harvest.collectedDate" />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="notes">Notes</label>
+        <textarea rows="5" readonly cols="30" [(ngModel)]="harvest.notes" pInputTextarea></textarea>
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="frameCount">Number of Frames</label>
+        <input id="frameCount" readonly [(ngModel)]="harvest.frameCount" type="number" pInputText />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="poundsCollected">Pounds Collected</label>
+        <input id="poundsCollected" readonly pInputText [(ngModel)]="harvest.poundsCollected" type="number" />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="jarDate">Jar Date</label>
+        <input id="jarDate" readonly pInputText [(ngModel)]="harvest.jarDate" />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+        <label for="jars">Jars</label>
+        <input id="jars" type="number" pInputText readonly [(ngModel)]="harvest.jars" />
+    </div>
+
+    <p-table [value]="hives">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Hives</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-hive>
+            <tr>
+                <td>{{hive.name}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <button pButton label="Edit" class="p-mt-2" (click)="edit()"></button>
+
+</div>

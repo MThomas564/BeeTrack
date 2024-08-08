@@ -1,0 +1,19 @@
+<h2>Harvests</h2>
+<div>
+    <p-button [routerLink]="'/addHarvest'">Add Harvest</p-button>
+    <p-table [value]="harvests" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Collected Date</th>
+                <th>View</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-harvest>
+            <tr>
+                <td>{{harvest.collectedDate | date: 'longDate'}}</td>
+                <td><p-button (onClick)="viewHarvest(harvest.id)">View</p-button></td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>

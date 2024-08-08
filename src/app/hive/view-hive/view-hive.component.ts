@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from 'src/app/services/data service/data-service.service';
+import { DataService } from 'src/app/services/data/data.service';
+import { Harvest } from 'src/shared/harvest';
 import { Hive } from 'src/shared/hive';
 import { InspectionNote } from 'src/shared/inspectionNote';
 
@@ -14,6 +15,7 @@ export class ViewHiveComponent implements OnInit {
   public id: string = '';
   hive: Hive = new Hive();
   notes: InspectionNote[] = [];
+  harvests: Harvest[] = [];
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {}
   
@@ -24,6 +26,7 @@ export class ViewHiveComponent implements OnInit {
 
       await this.dataService.getHive(this.id).then((item) => this.hive = item);
       await this.dataService.getInspectionNotesByHive(this.id).then((item) => this.notes = item )
+      await this.dataService.getHarvestsByHive(this.hive.id).then((item) => this.harvests=item);
       console.log(this.hive);
       console.log(this.notes);
     }
@@ -31,5 +34,9 @@ export class ViewHiveComponent implements OnInit {
 
   editHive(){
    this._router.navigate(['/hive/edit/', this.hive.id]) 
+  }
+
+  viewHarvest(id:string){
+    this._router.navigate(['harvest/', id]);
   }
 }
