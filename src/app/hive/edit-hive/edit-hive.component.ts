@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Validators, remult } from 'remult';
 import { Location } from '@angular/common';
 import { Hive } from 'src/shared/hive';
+import { DataService } from 'src/app/services/data service/data-service.service';
 
 @Component({
   selector: 'app-edit-hive',
@@ -12,7 +12,6 @@ import { Hive } from 'src/shared/hive';
 })
 export class EditHiveComponent implements OnInit {
   public id: string = '';
-  hiveRepo = remult.repo(Hive);
   hive: Hive = new Hive();
   
   fb: FormBuilder = new FormBuilder();
@@ -24,13 +23,13 @@ export class EditHiveComponent implements OnInit {
     archived: [false]
   })
 
-  constructor(private route: ActivatedRoute, private _location: Location) {}
+  constructor(private route: ActivatedRoute, private _location: Location, private dataService: DataService) {}
   
   async ngOnInit() {
     let idInput = this.route.snapshot.paramMap.get('id');
     if(idInput != undefined && idInput != ''){
       this.id = idInput;
-      this.hive = await this.hiveRepo.find({where: { id: this.id,},}).then((item) => this.hive = item[0])
+      this.hive = await this.dataService.getHive(this.id);
       this.hiveForm.controls['name'].setValue(this.hive.name)
       this.hiveForm.controls['origin'].setValue(this.hive.origin)
       this.hiveForm.controls['queenYear'].setValue(this.hive.yearOfQueen)
@@ -38,14 +37,14 @@ export class EditHiveComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
+  async onSubmit(): Promise<void> {
     if (this.hiveForm.valid) {
       if(this.hive){
         this.hive.name = this.hiveForm.controls['name'].value as string;
         this.hive.origin = this.hiveForm.controls['origin'].value as string;
         this.hive.yearOfQueen = this.hiveForm.controls['queenYear'].value as string;
         this.hive.archived = this.hiveForm.controls['archived'].value as boolean;
-        this.hiveRepo.save(this.hive);
+        await this.dataService.updateHive(this.hive);
         this._location.back();
       }
     }

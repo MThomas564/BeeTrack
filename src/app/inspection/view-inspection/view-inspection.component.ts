@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService } from 'primeng/api';
-import { remult } from 'remult';
+import { DataService } from 'src/app/services/data service/data-service.service';
 import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';
 
@@ -13,18 +13,17 @@ import { InspectionNote } from 'src/shared/inspectionNote';
 export class ViewInspectionComponent implements OnInit {
   private _router: Router = inject(Router);
   public id: string = '';
-  inspectionRepo = remult.repo(Inspection);
   inspection: Inspection = new Inspection()
   inspectionNotes: InspectionNote[] = [];
 
-  constructor(private route: ActivatedRoute, private confirmationService: ConfirmationService) { }
+  constructor(private route: ActivatedRoute, private confirmationService: ConfirmationService, private dataService: DataService) { }
 
   async ngOnInit(): Promise<void> {
     let idInput = this.route.snapshot.paramMap.get('id');
     if (idInput != undefined && idInput != '') {
       this.id = idInput;
 
-      this.inspection = await this.inspectionRepo.find({ where: { id: this.id }, include: { inspectionNotes: true } }).then((item) => this.inspection = item[0])
+      await this.dataService.getInspection(this.id).then((item) => this.inspection = item);
       this.inspectionNotes = this.inspection.inspectionNotes as InspectionNote[];
       console.log(this.inspection);
     }
