@@ -54,33 +54,6 @@ export class DataService {
     return inspectNotes.sort((a,b) => b.inspection.inspectionDate!.getTime() - a.inspection.inspectionDate!.getTime());
   }
 
-  async getInspectionNotesSortedByInspectionDate(id: string) {
-    // Fetch all inspection notes for the given beeHiveId
-    const hive = await this.hiveRepo.findId(id)
-    const inspectionNotes = await this.inspectionNoteRepo.find({
-      where: { hive: hive}
-    });
-
-    // Fetch related inspections
-    const inspections = await this.inspectionRepo.find({
-      where: {
-        id: { $in: inspectionNotes.map(note => note.inspection.id) }
-      }
-    });
-
-    const inspectionMap = new Map(inspections.map(ins => [ins.id, ins.inspectionDate]));
-
-    // Add inspectionDate to inspectionNotes
-    inspectionNotes.forEach(note => {
-      note['inspection'].inspectionDate = inspectionMap.get(note.inspection.id);
-    });
-
-    // Sort by inspectionDate in descending order
-    inspectionNotes.sort((a, b) => (b['inspection'].inspectionDate! > a['inspection'].inspectionDate! ? 1 : -1));
-
-    return inspectionNotes;
-  }
-
   async getInspection(id: string){
     return await this.inspectionRepo.findId(id, {include: {inspectionNotes: true}});
   }
@@ -103,7 +76,6 @@ export class DataService {
     inspectNotes.forEach(async (item) => {
       await this.inspectionRepo.relations(newInpsect).inspectionNotes.insert(item);
     });
-
     return newInpsect;
   }
 }
