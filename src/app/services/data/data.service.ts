@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { remult } from 'remult';
+import { Harvest } from 'src/shared/harvest';
+import { HarvestToHives } from 'src/shared/HarvestToHive';
 import { Hive } from 'src/shared/hive';
 import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';
@@ -12,6 +14,8 @@ export class DataService {
   private hiveRepo = remult.repo(Hive);
   private inspectionRepo = remult.repo(Inspection);
   private inspectionNoteRepo = remult.repo(InspectionNote);
+  private harvestRepo = remult.repo(Harvest);
+  private harvestHiveRepo = remult.repo(HarvestToHives);
 
   constructor() { }
 
@@ -78,4 +82,58 @@ export class DataService {
     });
     return newInpsect;
   }
+
+  async addHoneyHarvest(harvest: Partial<Harvest>, hives: Hive[]){
+    const h = await this.harvestRepo.insert(harvest);
+    console.log(h);
+    hives.forEach(async (element) => {
+      await this.harvestHiveRepo.insert({harvestId: h.id, hiveId: element.id})
+    });
+  }
+
+  async getHarvests(){
+    return this.harvestRepo.find();
+  }
+
+  async getHarvest(id: string): Promise<[Harvest, Hive[]]>{
+    const harvest = await this.harvestRepo.findId(id);
+    let hiveHarvests = await this.harvestHiveRepo.find({where: {harvestId: harvest.id}})
+    const hives:Hive[] = [];
+    hiveHarvests.forEach(async (item) => {
+      let h = await this.hiveRepo.findId(item.hiveId);
+      hives.push(h);
+    })
+    return [harvest, hives];
+
+  }
+
+  async getHarvestsByHive(id:string){
+    const h = await this.hiveRepo.findId(id);
+    console.log(h);
+    const hToH = await this.harvestHiveRepo.find({where: {hiveId: h.id}});
+    const harvestIds = hToH.map(o => o.harvestId)
+    const harvests = await this.harvestRepo.find({where:{id: {$in: harvestIds}}});
+    return harvests;
+  }
+
+
+  async updateHarvest(harvest:Harvest, hives:Hive[]){
+    const h = await this.harvestRepo.findId(harvest.id);
+    await this.harvestRepo.update(h.id, harvest);
+    let harvestToHives = await this.harvestHiveRepo.find({where:{harvestId: h.id}});
+  
+    const hivesToAdd = hives.filter(itemIn => !harvestToHives.some(item => item.hiveId === itemIn.id));
+
+    const hivesToRemove = harvestToHives.filter(item => !hives.some(inItem => inItem.id === item.hiveId))
+
+    hivesToAdd.forEach(async (item) => {
+      await this.harvestHiveRepo.insert({harvestId: h.id, hiveId: item.id});
+    })
+
+    hivesToRemove.forEach(async (item) => {
+      await this.harvestHiveRepo.delete(item);
+    })
+
+  }
+
 }

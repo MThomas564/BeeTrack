@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Hive } from 'src/shared/hive';
-import { DataService } from 'src/app/services/data service/data-service.service';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-edit-hive',

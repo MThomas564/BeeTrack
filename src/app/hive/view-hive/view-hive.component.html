@@ -19,6 +19,7 @@
 
 </div>
 
+<h3>Inspections</h3>
 <p-table [value]="notes" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
         <tr>
@@ -35,11 +36,31 @@
                     <p-tag value="Eggs" [severity]="note.eggs? 'success' : 'danger'" />
                     <p-tag value="Bias" [severity]="note.bias ? 'success' : 'warning'" />
                     <p-tag value="No Eggs Or Brood" [severity]="note.noEggsOrBrood? 'danger':'success'" />
-                    <p-tag value="Swarm Cells" [severity]="note.swarmCells ? 'danger' :'success'"/>
-                    <p-tag value="Supercedure Cells" [severity]="note.supercedureCells? 'danger':'success'"/>
+                    <p-tag value="Swarm Cells" [severity]="note.swarmCells ? 'danger' :'success'" />
+                    <p-tag value="Supercedure Cells" [severity]="note.supercedureCells? 'danger':'success'" />
                 </div>
-               
-               <strong>Notes:</strong> {{note.notes}}
+
+                <strong>Notes:</strong> {{note.notes}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+
+<h3>Harvests</h3>
+<p-table [value]="harvests" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Date</th>
+            <th>View</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-harvest>
+        <tr>
+            <td>
+                {{harvest.collectedDate | dateFormat}}
+            </td>
+            <td>
+                <button pButton label="View" (click)="viewHarvest(harvest.id)"></button>
             </td>
         </tr>
     </ng-template>

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Hive } from 'src/shared/hive';
 import { Router } from '@angular/router';
-import { DataService } from 'src/app/services/data service/data-service.service';
+import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
   selector: 'app-hives',

@@ -1,6 +1,7 @@
 import { Entity, Fields, Relations, Validators } from "remult";
 import { Inspection } from "./inspection";
 import { InspectionNote } from "./inspectionNote";
+import { Harvest } from "./harvest";
 
 @Entity('hives', {
     allowApiCrud: true,
@@ -28,4 +29,5 @@ export class Hive {
 
     @Relations.toMany(() => InspectionNote, {defaultIncluded: true})
     inspections?: InspectionNote[]
+
 }
