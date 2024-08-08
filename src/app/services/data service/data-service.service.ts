@@ -50,7 +50,35 @@ export class DataService {
 
   async getInspectionNotesByHive(id: string){
     const hive = await this.hiveRepo.findId(id)
-    return await this.inspectionNoteRepo.find({where: {hive: hive}});
+    const inspectNotes = await this.inspectionNoteRepo.find({where: {hive: hive}});
+    return inspectNotes.sort((a,b) => b.inspection.inspectionDate!.getTime() - a.inspection.inspectionDate!.getTime());
+  }
+
+  async getInspectionNotesSortedByInspectionDate(id: string) {
+    // Fetch all inspection notes for the given beeHiveId
+    const hive = await this.hiveRepo.findId(id)
+    const inspectionNotes = await this.inspectionNoteRepo.find({
+      where: { hive: hive}
+    });
+
+    // Fetch related inspections
+    const inspections = await this.inspectionRepo.find({
+      where: {
+        id: { $in: inspectionNotes.map(note => note.inspection.id) }
+      }
+    });
+
+    const inspectionMap = new Map(inspections.map(ins => [ins.id, ins.inspectionDate]));
+
+    // Add inspectionDate to inspectionNotes
+    inspectionNotes.forEach(note => {
+      note['inspection'].inspectionDate = inspectionMap.get(note.inspection.id);
+    });
+
+    // Sort by inspectionDate in descending order
+    inspectionNotes.sort((a, b) => (b['inspection'].inspectionDate! > a['inspection'].inspectionDate! ? 1 : -1));
+
+    return inspectionNotes;
   }
 
   async getInspection(id: string){
@@ -58,7 +86,7 @@ export class DataService {
   }
 
   async getInspections(){
-    return await this.inspectionRepo.find();
+    return await this.inspectionRepo.find({orderBy: {inspectionDate: "desc"}});
   }
 
   async addInspection(inspection: Partial<Inspection>){
