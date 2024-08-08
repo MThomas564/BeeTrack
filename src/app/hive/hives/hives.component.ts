@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { remult } from 'remult';
 import { Hive } from 'src/shared/hive';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data service/data-service.service';
 
 @Component({
   selector: 'app-hives',
@@ -11,12 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./hives.component.css']
 })
 export class HivesComponent implements OnInit {
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private dataService:DataService) { } 
   showingAll: boolean = true;
-  hiveRepo = remult.repo(Hive);
   hives: Hive[] = [];
-  ngOnInit() {
-  this.viewActive();
+  async ngOnInit() {
+    await this.viewActive();
   }
 
   viewHive(id:any){
@@ -29,18 +28,18 @@ export class HivesComponent implements OnInit {
     this.router.navigate([link]);
   }
 
-  viewAll(){
-    this.hiveRepo.find().then((items) => (this.hives = items))
+  async viewAll(){
+    await this.dataService.getHives().then((items) => (this.hives = items))
     this.showingAll = true;
   }
 
   viewArchived(){
-    this.hiveRepo.find({where: {archived: true},}).then((items) => (this.hives= items))
+    this.dataService.getArchivedHives().then((items) => (this.hives= items))
     this.showingAll = false;
   }
 
   viewActive(){
-    this.hiveRepo.find({where: {archived: false},}).then((items) => (this.hives= items))
+    this.dataService.getActiveHives().then((items) => (this.hives= items))
     this.showingAll = false;
   }
 }

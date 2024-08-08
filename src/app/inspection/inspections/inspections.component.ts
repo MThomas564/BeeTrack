@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { remult } from 'remult';
+import { DataService } from 'src/app/services/data service/data-service.service';
 import { Inspection } from 'src/shared/inspection';
 
 @Component({
@@ -9,12 +9,11 @@ import { Inspection } from 'src/shared/inspection';
   styleUrls: ['./inspections.component.css']
 })
 export class InspectionsComponent implements OnInit {
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private dataService:DataService) { } 
   inspections: Inspection[] = [];
-  inspectionRepo = remult.repo(Inspection)
 
   async ngOnInit() {
-    this.inspections = await this.inspectionRepo.find({orderBy: {inspectionDate: "desc"}}).then((items) => this.inspections = items)
+    await this.dataService.getInspections().then((items) => this.inspections = items);
     console.log(this.inspections)
   }
 

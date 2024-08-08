@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { remult } from 'remult';
+import { DataService } from 'src/app/services/data service/data-service.service';
 import { Hive } from 'src/shared/hive';
 import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';
@@ -13,13 +13,12 @@ import { InspectionNote } from 'src/shared/inspectionNote';
 })
 export class AddInspectionComponent implements OnInit {
   private _router: Router = inject(Router)
+  constructor(private dataService:DataService){}
   async ngOnInit(): Promise<void> {
-   this.hives = await this.hiveRepo.find({where: {archived: false}}).then((items)=> this.hives = items);
-   this.addHiveNote();
+    await this.dataService.getHives().then((items) => this.hives = items);
+    this.addHiveNote();
   }
 
-  hiveRepo = remult.repo(Hive);
-  inspectionRepo = remult.repo(Inspection);
   hives: Hive[] = [];
   fb: FormBuilder = new FormBuilder();
 
@@ -37,19 +36,13 @@ export class AddInspectionComponent implements OnInit {
     console.log(this.inspectionForm.value)
 
     var hiveNotes: InspectionNote[] = this.inspectionForm.value['hiveNotes'] as InspectionNote[]
-
-    const newInspect = await this.inspectionRepo.insert({
+    let inspect: Partial<Inspection> = {
       inspectionDate: this.inspectionForm.value['date'] as Date,
       notes: this.inspectionForm.value['note'] as string,
-      //inspectionNotes: this.inspectionForm.value['hiveNotes'] as InspectionNote[]
-    })
+    }
 
-    hiveNotes.forEach(async (item) => {
-      await this.inspectionRepo.relations(newInspect).inspectionNotes.insert(item)
-    })
+    await this.dataService.addInspectAndNotes(inspect, hiveNotes)
 
-
-    console.log(newInspect)
     this._router.navigateByUrl('inspections')
 
   }

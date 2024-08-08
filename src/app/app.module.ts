@@ -34,6 +34,7 @@ import { StatusTagComponent } from './shared/status-tag/status-tag.component';
 import { ConfirmationService } from 'primeng/api';
 import { DateFormatPipe } from './shared/date pipe/date-format.pipe';
 import { TagModule} from 'primeng/tag'
+import { DataService } from './services/data service/data-service.service';
 
 const routes: Routes = [ 
   { path: '', component: HivesComponent } // Home page route 
@@ -79,7 +80,7 @@ const routes: Routes = [
     , ConfirmDialogModule
     , TagModule
      ],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

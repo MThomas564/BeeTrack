@@ -7,7 +7,7 @@ import { InspectionNote } from 'src/shared/inspectionNote';
 @Injectable({
   providedIn: 'root'
 })
-export class DataServiceService {
+export class DataService {
 
   private hiveRepo = remult.repo(Hive);
   private inspectionRepo = remult.repo(Inspection);
@@ -15,16 +15,24 @@ export class DataServiceService {
 
   constructor() { }
 
-  async newHive(hive: Partial<Hive>){
+  async addHive(hive: Partial<Hive>){
     return await this.hiveRepo.insert(hive);
   }
 
   async getHive(id: string) {
-    return await this.hiveRepo.find({where:{id:id}});
+    return await this.hiveRepo.findId(id);
   }
 
   async getHives(){
     return await this.hiveRepo.find();
+  }
+
+  async getArchivedHives(){
+    return await this.hiveRepo.find({where: {archived: true}})
+  }
+
+  async getActiveHives(){
+    return await this.hiveRepo.find({where : {archived: false}});
   }
 
   async deleteHiveDndInspectionNotes(id: string){
@@ -47,6 +55,10 @@ export class DataServiceService {
 
   async getInspection(id: string){
     return await this.inspectionRepo.findId(id, {include: {inspectionNotes: true}});
+  }
+
+  async getInspections(){
+    return await this.inspectionRepo.find();
   }
 
   async addInspection(inspection: Partial<Inspection>){

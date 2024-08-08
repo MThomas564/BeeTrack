@@ -2,9 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
-import { remult } from 'remult';
 import { Hive } from 'src/shared/hive';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data service/data-service.service';
 
 @Component({
   selector: 'app-add-hive',
@@ -21,18 +21,19 @@ export class AddHiveComponent implements OnInit {
     queenYear: ['', Validators.required]
   })
 
-hiveRepo = remult.repo(Hive);
+  constructor(private dataService: DataService) {}
+
 ngOnInit(): void {
   
 }
 async addHive(){
   try{ 
-    const newHive = await this.hiveRepo.insert(
-      {
-        name: this.hiveForm.value['name'] as string, 
-        origin: this.hiveForm.value['origin'] as string,
-        yearOfQueen: this.hiveForm.value['queenYear'] as string
-      })
+    let hive: Partial<Hive> = {
+      name: this.hiveForm.value['name'] as string,
+      origin: this.hiveForm.value['origin'] as string,
+      yearOfQueen: this.hiveForm.value['queenYear'] as string
+    }
+    await this.dataService.addHive(hive);
     this._router.navigateByUrl('')
   }
   catch(error: any){
