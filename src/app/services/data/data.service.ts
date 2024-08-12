@@ -151,4 +151,8 @@ export class DataService {
     return count;
   }
 
+  async updateSale(sale:JarSale){
+    await this.jarSaleRepo.update(sale.id, sale);
+  }
+
 }

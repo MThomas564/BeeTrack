@@ -39,6 +39,7 @@ import { ViewHarvestComponent } from './harvest/view-harvest/view-harvest.compon
 import { EditHarvestComponent } from './harvest/edit-harvest/edit-harvest.component';
 import { AddSaleComponent } from './sales/add-sale/add-sale.component';
 import { SalesComponent } from './sales/sales/sales.component';
+import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
 
 const routes: Routes = [
   { path: '', component: HivesComponent } // Home page route 
@@ -54,6 +55,7 @@ const routes: Routes = [
   , { path: 'harvest/edit/:id', component: EditHarvestComponent }
   , { path: 'sales', component: SalesComponent }
   , { path: 'sales/add', component: AddSaleComponent }
+  , { path: 'sales/:id', component: EditSaleComponent}
 ];
 
 @NgModule({
@@ -74,6 +76,7 @@ const routes: Routes = [
     , EditHarvestComponent
     , SalesComponent
     , AddSaleComponent
+    , EditSaleComponent
   ],
   imports: [
     BrowserModule
