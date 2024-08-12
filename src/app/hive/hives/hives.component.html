@@ -3,7 +3,7 @@
         <h2>Hives</h2>
         <p-button [routerLink]="'add'">Add Hive</p-button>
     </div>
-    <p-table [value]="hives" [responsiveLayout]="'scroll'">
+    <p-table [value]="hives" [responsiveLayout]="'scroll'" [paginator]="true" [rows]="10">
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 <p-button (click)="viewAll()" size="small">View all</p-button>

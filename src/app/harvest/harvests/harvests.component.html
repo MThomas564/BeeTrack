@@ -1,7 +1,7 @@
 <h2>Harvests</h2>
 <div>
     <p-button [routerLink]="'/addHarvest'">Add Harvest</p-button>
-    <p-table [value]="harvests" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="harvests" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10">
         <ng-template pTemplate="header">
             <tr>
                 <th>Collected Date</th>
