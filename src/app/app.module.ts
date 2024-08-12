@@ -17,6 +17,7 @@ import { DragDropModule } from 'primeng/dragdrop'
 import { CheckboxModule } from 'primeng/checkbox';
 import { ConfirmDialogModule } from 'primeng/confirmdialog'
 import { MultiSelectModule } from 'primeng/multiselect'
+import { AccordionModule} from 'primeng/accordion';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './shared/menu/menu.component';
@@ -99,6 +100,7 @@ const routes: Routes = [
     , ConfirmDialogModule
     , TagModule
     , MultiSelectModule
+    , AccordionModule
   ],
   providers: [ConfirmationService, DataService],
   bootstrap: [AppComponent],
