@@ -1,23 +1,33 @@
 <form [formGroup]="hiveForm" (ngSubmit)="onSubmit()">
-  <div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
-        <label for="name">Hive Name</label>
-        <input id="name" type="text" pInputText formControlName="name" />
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+            <label for="name">Hive Name</label>
+            <input id="name" type="text" pInputText formControlName="name" />
+            <div *ngIf="hiveForm.controls['name'].invalid && hiveForm.controls['name'].touched" class="p-error">
+                Hive Name is required.
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <label for="origin">Hive Origin</label>
+            <input id="origin" type="text" pInputText formControlName="origin" />
+            <div *ngIf="hiveForm.controls['origin'].invalid && hiveForm.controls['origin'].touched" class="p-error">
+                Hive Origin is required.
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <label for="queenYear">Year of Queen</label>
+            <input id="queenYear" type="text" pInputText formControlName="queenYear" />
+            <div *ngIf="hiveForm.controls['queenYear'].invalid && hiveForm.controls['queenYear'].touched"
+                class="p-error">
+                Queen Year is required.
+            </div>
+        </div>
+        <div class="p-field p-col-12 p-md-6">
+            <label for="archived">Archived</label>
+            <p-checkbox binary="true" [formControl]="hiveForm.controls['archived']"></p-checkbox>
+        </div>
+        <div class="p-field p-col-12">
+            <button pButton type="submit" label="Submit" class="p-mt-2"></button>
+        </div>
     </div>
-    <div class="p-field p-col-12 p-md-6">
-        <label for="origin">Hive Origin</label>
-        <input id="origin" type="text" pInputText formControlName="origin" />
-    </div>
-    <div class="p-field p-col-12 p-md-6">
-        <label for="queenYear">Year of Queen</label>
-        <input id="queenYear" type="email" pInputText formControlName="queenYear" />
-    </div>
-    <div class="p-field p-col-12 p-md-6">
-        <label for="archived">Archived</label>
-        <p-checkbox binary="true" [formControl]="hiveForm.controls['archived']"></p-checkbox>
-    </div>
-    <div class="p-field p-col-12">
-        <button pButton type="submit" label="Submit" class="p-mt-2" ></button>
-    </div>
-</div>
- </form>
+</form>

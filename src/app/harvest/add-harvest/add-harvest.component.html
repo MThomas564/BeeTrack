@@ -4,6 +4,10 @@
         <div class="p-field p-col-12 p-md-6">
             <label for="collectedDate">Collected Date</label>
             <p-calendar formControlName="collectedDate" />
+            <div *ngIf="harvestForm.controls['collectedDate'].invalid && harvestForm.controls['collectedDate'].touched"
+                class="p-error">
+                Collected Date is required.
+            </div>
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="notes">Notes</label>
@@ -28,13 +32,14 @@
 
         <div class="p-field p-col-12 p-md-6">
             <label for="hives">Hives</label>
-            <p-multiSelect id="hives" [options]="hives" formControlName="hives" optionLabel="name" placeholder="Select Hives" />
+            <p-multiSelect id="hives" [options]="hives" formControlName="hives" optionLabel="name"
+                placeholder="Select Hives" />
         </div>
 
     </div>
 
     <div style="display: flex;gap:1em;margin: 1rem 0;">
-        <button pButton type="submit" label="submit"></button>  
+        <button pButton type="submit" label="submit"></button>
     </div>
 
 

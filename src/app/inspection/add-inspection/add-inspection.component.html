@@ -9,6 +9,9 @@
         <div class="p-field p-col-12 p-md-6">
             <label for="date" class="block">Inspection Date</label>
             <p-calendar formControlName="date" />
+              <div *ngIf="inspectionForm.controls['date'].invalid && inspectionForm.controls['date'].touched" class="p-error">
+                Inspection Date is required.
+        </div>
         </div>
 
         <div class="p-field p-col-12 p-md-6">
