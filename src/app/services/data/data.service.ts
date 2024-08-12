@@ -92,7 +92,7 @@ export class DataService {
   }
 
   async getHarvests(){
-    return this.harvestRepo.find();
+    return this.harvestRepo.find({orderBy:{collectedDate: "desc"}});
   }
 
   async getHarvest(id: string): Promise<[Harvest, Hive[]]>{
