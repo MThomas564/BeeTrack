@@ -18,7 +18,7 @@ export class HarvestsComponent {
   }
 
   viewHarvest(id:any){
-    let link:string = '/harvest/'+id;
+    let link:string = '/harvests/'+id;
     this.router.navigate([link]);
   }
 

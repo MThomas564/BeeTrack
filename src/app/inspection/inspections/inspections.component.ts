@@ -18,7 +18,7 @@ export class InspectionsComponent implements OnInit {
   }
 
   viewInspection(id:any){
-    let link:string = '/inspection/'+id;
+    let link:string = '/inspections/'+id;
     this.router.navigate([link]);
   }
 

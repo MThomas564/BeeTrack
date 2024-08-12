@@ -33,10 +33,10 @@ export class ViewHiveComponent implements OnInit {
   }
 
   editHive(){
-   this._router.navigate(['/hive/edit/', this.hive.id]) 
+   this._router.navigate(['/hives/edit/', this.hive.id]) 
   }
 
   viewHarvest(id:string){
-    this._router.navigate(['harvest/', id]);
+    this._router.navigate(['harvests/', id]);
   }
 }

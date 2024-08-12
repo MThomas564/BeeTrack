@@ -1,7 +1,7 @@
 <div>
     <div style="width: 100%; display: flex; justify-content: space-between; align-items: baseline;">
         <h2>Hives</h2>
-        <p-button [routerLink]="'add'">Add Hive</p-button>
+        <p-button [routerLink]="'hives/add'">Add Hive</p-button>
     </div>
     <p-table [value]="hives" [responsiveLayout]="'scroll'" [paginator]="true" [rows]="10">
         <ng-template pTemplate="caption">

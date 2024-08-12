@@ -19,12 +19,12 @@ export class HivesComponent implements OnInit {
   }
 
   viewHive(id:any){
-    let link:string = '/hive/'+id;
+    let link:string = '/hives/'+id;
     this.router.navigate([link]);
   }
 
   editHive(id:any){
-    let link:string = '/hive/edit/'+id;
+    let link:string = '/hives/edit/'+id;
     this.router.navigate([link]);
   }
 

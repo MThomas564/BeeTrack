@@ -43,17 +43,17 @@ import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
 
 const routes: Routes = [
-  { path: '', component: HivesComponent } // Home page route 
-  , { path: 'add', component: AddHiveComponent } // About page route 
-  , { path: 'hive/:id', component: ViewHiveComponent }
-  , { path: 'hive/edit/:id', component: EditHiveComponent }
+  { path: '', component: HivesComponent }
+  , { path: 'hives/add', component: AddHiveComponent }
+  , { path: 'hives/:id', component: ViewHiveComponent }
+  , { path: 'hives/edit/:id', component: EditHiveComponent }
   , { path: 'inspections', component: InspectionsComponent }
-  , { path: 'addInspection', component: AddInspectionComponent }
-  , { path: 'inspection/:id', component: ViewInspectionComponent }
+  , { path: 'inspections/add', component: AddInspectionComponent }
+  , { path: 'inspections/:id', component: ViewInspectionComponent }
   , { path: 'harvests', component: HarvestsComponent }
-  , { path: 'addHarvest', component: AddHarvestComponent }
-  , { path: 'harvest/:id', component: ViewHarvestComponent }
-  , { path: 'harvest/edit/:id', component: EditHarvestComponent }
+  , { path: 'harvests/add', component: AddHarvestComponent }
+  , { path: 'harvests/:id', component: ViewHarvestComponent }
+  , { path: 'harvests/edit/:id', component: EditHarvestComponent }
   , { path: 'sales', component: SalesComponent }
   , { path: 'sales/add', component: AddSaleComponent }
   , { path: 'sales/:id', component: EditSaleComponent}

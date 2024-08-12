@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -84,8 +85,7 @@ export class EditHarvestComponent implements OnInit {
 
     await this.dataService.updateHarvest(this.harvest, this.harvestForm.value['hives'])
 
-    this._router.navigate(['/harvest/', this.harvest.id]);
-
+    this._router.navigateByUrl('/harvests')
   }
 
 }
