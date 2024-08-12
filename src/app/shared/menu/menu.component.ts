@@ -28,6 +28,11 @@ export class MenuComponent implements OnInit {
         label: 'Harvests',
         routerLink: '/harvests',
         icon: 'pi pi-receipt'
+      },
+      {
+        label: 'Sales',
+        routerLink: '/sales',
+        icon: 'pi pi-receipt'
       }
     ]
 

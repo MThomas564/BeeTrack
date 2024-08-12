@@ -5,6 +5,7 @@ import { HarvestToHives } from 'src/shared/HarvestToHive';
 import { Hive } from 'src/shared/hive';
 import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';
+import { JarSale } from 'src/shared/jarSale';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class DataService {
   private inspectionNoteRepo = remult.repo(InspectionNote);
   private harvestRepo = remult.repo(Harvest);
   private harvestHiveRepo = remult.repo(HarvestToHives);
+  private jarSaleRepo = remult.repo(JarSale);
 
   constructor() { }
 
@@ -85,7 +87,6 @@ export class DataService {
 
   async addHoneyHarvest(harvest: Partial<Harvest>, hives: Hive[]){
     const h = await this.harvestRepo.insert(harvest);
-    console.log(h);
     hives.forEach(async (element) => {
       await this.harvestHiveRepo.insert({harvestId: h.id, hiveId: element.id})
     });
@@ -104,7 +105,6 @@ export class DataService {
       hives.push(h);
     })
     return [harvest, hives];
-
   }
 
   async getHarvestsByHive(id:string){
@@ -116,24 +116,43 @@ export class DataService {
     return harvests;
   }
 
-
   async updateHarvest(harvest:Harvest, hives:Hive[]){
     const h = await this.harvestRepo.findId(harvest.id);
     await this.harvestRepo.update(h.id, harvest);
     let harvestToHives = await this.harvestHiveRepo.find({where:{harvestId: h.id}});
-  
     const hivesToAdd = hives.filter(itemIn => !harvestToHives.some(item => item.hiveId === itemIn.id));
-
     const hivesToRemove = harvestToHives.filter(item => !hives.some(inItem => inItem.id === item.hiveId))
-
     hivesToAdd.forEach(async (item) => {
       await this.harvestHiveRepo.insert({harvestId: h.id, hiveId: item.id});
     })
-
     hivesToRemove.forEach(async (item) => {
       await this.harvestHiveRepo.delete(item);
     })
+  }
 
+  async getJarSales(){
+    return await this.jarSaleRepo.find({orderBy:{dateOfSale: "desc"}});
+  }
+
+  async addSale(sale: Partial<JarSale>){
+    return await this.jarSaleRepo.insert(sale);
+  }
+
+  async getJarSale(id:string){
+    return await this.jarSaleRepo.findId(id);
+  }
+
+  async getTotalJarsSold(){
+    var sales = await this.jarSaleRepo.find();
+    let count = 0;
+    sales.forEach((item) => {
+      count += item.numberOfJars
+    })
+    return count;
+  }
+
+  async updateSale(sale:JarSale){
+    await this.jarSaleRepo.update(sale.id, sale);
   }
 
 }
