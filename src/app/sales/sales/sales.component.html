@@ -4,7 +4,7 @@
 </div>
 <div>
     <p-button [routerLink]="'/sales/add'">Add Sale</p-button>
-    <p-table [value]="sales" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="sales" [tableStyle]="{ 'min-width': '50rem' }" [paginator]="true" [rows]="10">
         <ng-template pTemplate="header">
             <tr>
                 <th>Date</th>
