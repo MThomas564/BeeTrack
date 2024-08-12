@@ -2,12 +2,20 @@
 <form [formGroup]="saleForm" (ngSubmit)="addSale()">
     <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6">
-            <label for="date">Sale Date</label>
-            <p-calendar formControlName="dateOfSale"/>
+            <label for="dateOfSale">Sale Date</label>
+            <p-calendar formControlName="dateOfSale" />
+            <div *ngIf="saleForm.controls['dateOfSale'].invalid && saleForm.controls['dateOfSale'].touched"
+                class="p-error">
+                Date of Sale is required.
+            </div>
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="count">Number of Jars</label>
-            <input id="count" type="number" pInputText formControlName="numberOfJars"/>
+            <input id="count" type="number" pInputText formControlName="numberOfJars" />
+            <div *ngIf="saleForm.controls['numberOfJars'].invalid && saleForm.controls['numberOfJars'].touched"
+                class="p-error">
+                Number of Jars is required.
+            </div>
         </div>
         <div class="p-field p-col-12 col-md-6">
             <label for="notes">Notes</label>
