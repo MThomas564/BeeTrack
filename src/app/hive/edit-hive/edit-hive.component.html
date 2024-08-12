@@ -27,7 +27,7 @@
             <p-checkbox binary="true" [formControl]="hiveForm.controls['archived']"></p-checkbox>
         </div>
         <div class="p-field p-col-12">
-            <button pButton type="submit" label="Submit" class="p-mt-2"></button>
+            <button pButton type="submit" label="Submit" class="p-mt-2" [disabled]="hiveForm.invalid"></button>
         </div>
     </div>
 </form>
