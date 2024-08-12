@@ -7,6 +7,7 @@ import { Inspection } from "../shared/inspection"
 import { InspectionNote } from "../shared/inspectionNote"
 import { Harvest } from "../shared/harvest"
 import { HarvestToHives } from "../shared/HarvestToHive"
+import { JarSale } from "../shared/jarSale"
 
 const dbHost = process.env['POSTGRES_HOST']
 const dbPort = process.env['POSTGRES_PORT']
@@ -21,6 +22,6 @@ export const api = remultExpress({
   dataProvider: dbHost ? createPostgresDataProvider({
     connectionString: conString
   }): undefined,
-    entities: [Hive, Inspection, InspectionNote, Harvest, HarvestToHives],
-    admin: true
+    entities: [Hive, Inspection, InspectionNote, Harvest, HarvestToHives, JarSale],
+    admin: false
   })
