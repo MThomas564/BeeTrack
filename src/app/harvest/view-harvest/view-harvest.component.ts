@@ -34,7 +34,7 @@ export class ViewHarvestComponent implements OnInit {
   }
 
   edit(){
-    this._router.navigate(['/harvest/edit/', this.harvest.id]);
+    this._router.navigate(['/harvests/edit/', this.harvest.id]);
   }
 
 }
