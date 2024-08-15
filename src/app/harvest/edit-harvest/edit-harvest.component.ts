@@ -87,5 +87,5 @@ export class EditHarvestComponent implements OnInit {
 
     this._router.navigateByUrl('/harvests')
   }
-
+  
 }
