@@ -1,5 +1,5 @@
 # BeeTrack
-BeeTrack is a web application designed to assist apiary managers in efficiently managing their apiaries, keeping track of hives and inspections seamlessly.
+BeeTrack is a web application designed to assist bee keepers in efficiently managing their apiaries, keeping track of hives and inspections seamlessly.
 
 <img src="./src/assets/logo.png" width="200" height="200">
 
