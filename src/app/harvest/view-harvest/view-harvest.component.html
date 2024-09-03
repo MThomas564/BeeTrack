@@ -1,4 +1,6 @@
 <h2>Harvest</h2>
+<p-confirmDialog />
+
 
 <div class="p-fluid p-formgrid p-grid">
     <div class="p-field p-col-12 p-md-6">
@@ -40,5 +42,7 @@
     </p-table>
 
     <button pButton label="Edit" class="p-mt-2" (click)="edit()"></button>
+    <p-button (onClick)="confirmDelete($event)" label="Delete" severity="danger"/>
+
 
 </div>
