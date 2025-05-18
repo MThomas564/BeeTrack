@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -41,6 +41,7 @@ import { EditHarvestComponent } from './harvest/edit-harvest/edit-harvest.compon
 import { AddSaleComponent } from './sales/add-sale/add-sale.component';
 import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const routes: Routes = [
   { path: '', component: HivesComponent }
@@ -100,7 +101,12 @@ const routes: Routes = [
     , ConfirmDialogModule
     , TagModule
     , MultiSelectModule
-    , AccordionModule
+    , AccordionModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+})
   ],
   providers: [ConfirmationService, DataService],
   bootstrap: [AppComponent],
