@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
@@ -60,55 +60,48 @@ const routes: Routes = [
   , { path: 'sales/:id', component: EditSaleComponent}
 ];
 
-@NgModule({
-  declarations: [AppComponent
-    , MenuComponent
-    , HivesComponent
-    , AddHiveComponent
-    , InspectionsComponent
-    , ViewHiveComponent
-    , AddInspectionComponent
-    , ViewInspectionComponent
-    , EditHiveComponent
-    , StatusTagComponent
-    , HarvestsComponent
-    , AddHarvestComponent
-    , DateFormatPipe
-    , ViewHarvestComponent
-    , EditHarvestComponent
-    , SalesComponent
-    , AddSaleComponent
-    , EditSaleComponent
-  ],
-  imports: [
-    BrowserModule
-    , CommonModule
-    , HttpClientModule
-    , FormsModule
-    , RouterModule.forRoot(routes)
-    , TableModule
-    , MenubarModule
-    , ButtonModule
-    , InputTextModule
-    , ReactiveFormsModule
-    , CalendarModule
-    , BrowserAnimationsModule
-    , InputTextareaModule
-    , DropdownModule
-    , CardModule
-    , DragDropModule
-    , CheckboxModule
-    , ConfirmDialogModule
-    , TagModule
-    , MultiSelectModule
-    , AccordionModule, ServiceWorkerModule.register('ngsw-worker.js', {
-  enabled: !isDevMode(),
-  // Register the ServiceWorker as soon as the application is stable
-  // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
-})
-  ],
-  providers: [ConfirmationService, DataService],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent,
+        MenuComponent,
+        HivesComponent,
+        AddHiveComponent,
+        InspectionsComponent,
+        ViewHiveComponent,
+        AddInspectionComponent,
+        ViewInspectionComponent,
+        EditHiveComponent,
+        StatusTagComponent,
+        HarvestsComponent,
+        AddHarvestComponent,
+        DateFormatPipe,
+        ViewHarvestComponent,
+        EditHarvestComponent,
+        SalesComponent,
+        AddSaleComponent,
+        EditSaleComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        CommonModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
+        TableModule,
+        MenubarModule,
+        ButtonModule,
+        InputTextModule,
+        ReactiveFormsModule,
+        CalendarModule,
+        BrowserAnimationsModule,
+        InputTextareaModule,
+        DropdownModule,
+        CardModule,
+        DragDropModule,
+        CheckboxModule,
+        ConfirmDialogModule,
+        TagModule,
+        MultiSelectModule,
+        AccordionModule, ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })], providers: [ConfirmationService, DataService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
