@@ -3,7 +3,7 @@
     <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6">
             <label for="collectedDate">Collected Date</label>
-            <p-calendar formControlName="collectedDate" />
+            <p-datepicker formControlName="collectedDate" />
             <div *ngIf="harvestForm.controls['collectedDate'].invalid && harvestForm.controls['collectedDate'].touched"
                 class="p-error">
                 Collected Date is required.
@@ -23,7 +23,7 @@
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="jarDate">Jar Date</label>
-            <p-calendar formControlName="jarDate" />
+            <p-datepicker formControlName="jarDate" />
         </div>
         <div class="p-field p-col-12 p-md-6">
             <label for="jars">Jars</label>

@@ -4,9 +4,10 @@ import { DataService } from 'src/app/services/data/data.service';
 import { Inspection } from 'src/shared/inspection';
 
 @Component({
-  selector: 'app-inspections',
-  templateUrl: './inspections.component.html',
-  styleUrls: ['./inspections.component.css']
+    selector: 'app-inspections',
+    templateUrl: './inspections.component.html',
+    styleUrls: ['./inspections.component.css'],
+    standalone: false
 })
 export class InspectionsComponent implements OnInit {
   constructor(private router: Router, private dataService:DataService) { } 

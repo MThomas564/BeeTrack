@@ -3,7 +3,7 @@
     <div class="p-fluid p-formgrid p-grid">
         <div class="p-field p-col-12 p-md-6">
             <label for="dateOfSale">Sale Date</label>
-            <p-calendar formControlName="dateOfSale" />
+            <p-datepicker formControlName="dateOfSale" />
             <div *ngIf="saleForm.controls['dateOfSale'].invalid && saleForm.controls['dateOfSale'].touched"
                 class="p-error">
                 Date of Sale is required.

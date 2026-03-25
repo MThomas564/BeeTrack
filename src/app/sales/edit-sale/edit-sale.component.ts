@@ -5,9 +5,10 @@ import { DataService } from 'src/app/services/data/data.service';
 import { JarSale } from 'src/shared/jarSale';
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-edit-sale',
-  templateUrl: './edit-sale.component.html',
-  styleUrl: './edit-sale.component.css'
+    selector: 'app-edit-sale',
+    templateUrl: './edit-sale.component.html',
+    styleUrl: './edit-sale.component.css',
+    standalone: false
 })
 export class EditSaleComponent implements OnInit {
   public id: string = '';

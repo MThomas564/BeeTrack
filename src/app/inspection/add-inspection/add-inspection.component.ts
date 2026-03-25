@@ -7,9 +7,10 @@ import { Inspection } from 'src/shared/inspection';
 import { InspectionNote } from 'src/shared/inspectionNote';
 
 @Component({
-  selector: 'app-add-inspection',
-  templateUrl: './add-inspection.component.html',
-  styleUrl: './add-inspection.component.css'
+    selector: 'app-add-inspection',
+    templateUrl: './add-inspection.component.html',
+    styleUrl: './add-inspection.component.css',
+    standalone: false
 })
 export class AddInspectionComponent implements OnInit {
   private _router: Router = inject(Router)

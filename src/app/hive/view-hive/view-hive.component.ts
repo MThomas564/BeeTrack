@@ -6,9 +6,10 @@ import { Hive } from 'src/shared/hive';
 import { InspectionNote } from 'src/shared/inspectionNote';
 
 @Component({
-  selector: 'app-view-hive',
-  templateUrl: './view-hive.component.html',
-  styleUrls: ['./view-hive.component.css']
+    selector: 'app-view-hive',
+    templateUrl: './view-hive.component.html',
+    styleUrls: ['./view-hive.component.css'],
+    standalone: false
 })
 export class ViewHiveComponent implements OnInit {
   private _router: Router = inject(Router)

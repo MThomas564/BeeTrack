@@ -7,9 +7,10 @@ import { Harvest } from 'src/shared/harvest';
 import { Hive } from 'src/shared/hive';
 
 @Component({
-  selector: 'app-edit-harvest',
-  templateUrl: './edit-harvest.component.html',
-  styleUrl: './edit-harvest.component.css'
+    selector: 'app-edit-harvest',
+    templateUrl: './edit-harvest.component.html',
+    styleUrl: './edit-harvest.component.css',
+    standalone: false
 })
 export class EditHarvestComponent implements OnInit {
 

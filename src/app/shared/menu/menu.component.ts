@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+    selector: 'app-menu',
+    templateUrl: './menu.component.html',
+    styleUrl: './menu.component.css',
+    standalone: false
 })
 export class MenuComponent implements OnInit {
   items: MenuItem[] | undefined;

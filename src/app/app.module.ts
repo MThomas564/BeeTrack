@@ -9,7 +9,7 @@ import { TableModule } from 'primeng/table';
 import { MenubarModule } from 'primeng/menubar'
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { CalendarModule } from 'primeng/calendar';
+import { DatePickerModule } from 'primeng/datepicker';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
@@ -42,6 +42,8 @@ import { AddSaleComponent } from './sales/add-sale/add-sale.component';
 import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 const routes: Routes = [
   { path: '', component: HivesComponent }
@@ -88,7 +90,7 @@ const routes: Routes = [
         ButtonModule,
         InputTextModule,
         ReactiveFormsModule,
-        CalendarModule,
+        DatePickerModule,
         BrowserAnimationsModule,
         InputTextareaModule,
         DropdownModule,
@@ -103,5 +105,5 @@ const routes: Routes = [
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
-        })], providers: [ConfirmationService, DataService, provideHttpClient(withInterceptorsFromDi())] })
+        })], providers: [ConfirmationService, DataService, provideHttpClient(withInterceptorsFromDi()), providePrimeNG({ theme: { preset: Aura } })] })
 export class AppModule { }
