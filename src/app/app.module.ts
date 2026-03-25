@@ -10,7 +10,7 @@ import { MenubarModule } from 'primeng/menubar'
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DatePickerModule } from 'primeng/datepicker';
-import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextarea } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { DragDropModule } from 'primeng/dragdrop'
@@ -92,7 +92,7 @@ const routes: Routes = [
         ReactiveFormsModule,
         DatePickerModule,
         BrowserAnimationsModule,
-        InputTextareaModule,
+        InputTextarea,
         DropdownModule,
         CardModule,
         DragDropModule,

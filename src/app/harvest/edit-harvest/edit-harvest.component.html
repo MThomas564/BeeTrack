@@ -1,47 +1,49 @@
 <form [formGroup]="harvestForm" (ngSubmit)="editHarvest()">
-    <div class="p-fluid p-formgrid p-grid">
-        <div class="p-field p-col-12 p-md-6">
-            <label for="collectedDate">Collected Date</label>
-            <p-datepicker formControlName="collectedDate" />
-            <div *ngIf="harvestForm.controls['collectedDate'].invalid && harvestForm.controls['collectedDate'].touched"
-                class="p-error">
-                Collected Date is required.
-            </div>
+  <div class="p-fluid p-formgrid p-grid">
+    <div class="p-field p-col-12 p-md-6">
+      <label for="collectedDate">Collected Date</label>
+      <p-datepicker formControlName="collectedDate" />
+      @if (harvestForm.controls['collectedDate'].invalid && harvestForm.controls['collectedDate'].touched) {
+        <div
+          class="p-error">
+          Collected Date is required.
         </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="notes">Notes</label>
-            <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="frameCount">Number of Frames</label>
-            <input id="frameCount" type="number" pInputText formControlName="frameCount" />
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="poundsCollected">Pounds Collected</label>
-            <input id="poundsCollected" type="number" pInputText formControlName="poundsCollected" />
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="jarDate">Jar Date</label>
-            <p-datepicker formControlName="jarDate" />
-        </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="jars">Jars</label>
-            <input id="jars" type="number" pInputText formControlName="jars" />
-        </div>
+      }
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="notes">Notes</label>
+      <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="frameCount">Number of Frames</label>
+      <input id="frameCount" type="number" pInputText formControlName="frameCount" />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="poundsCollected">Pounds Collected</label>
+      <input id="poundsCollected" type="number" pInputText formControlName="poundsCollected" />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="jarDate">Jar Date</label>
+      <p-datepicker formControlName="jarDate" />
+    </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="jars">Jars</label>
+      <input id="jars" type="number" pInputText formControlName="jars" />
+    </div>
 
-        <div class="p-field p-col-12 p-md-6">
-            <label for="hives">Hives</label>
-            <p-multiSelect [options]="hives" formControlName="hives" optionLabel="name" [dataKey]="'id'"
-                placeholder="Select Hives">
-            </p-multiSelect>
-
-        </div>
+    <div class="p-field p-col-12 p-md-6">
+      <label for="hives">Hives</label>
+      <p-multiSelect [options]="hives" formControlName="hives" optionLabel="name" [dataKey]="'id'"
+        placeholder="Select Hives">
+      </p-multiSelect>
 
     </div>
 
-    <div style="display: flex;gap:1em;margin: 1rem 0;">
-        <button pButton type="submit" label="submit" [disabled]="harvestForm.invalid"></button>
-    </div>
+  </div>
+
+  <div style="display: flex;gap:1em;margin: 1rem 0;">
+    <button pButton type="submit" label="submit" [disabled]="harvestForm.invalid"></button>
+  </div>
 
 
 </form>
