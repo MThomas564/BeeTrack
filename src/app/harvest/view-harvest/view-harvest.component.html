@@ -2,28 +2,28 @@
 <p-confirmDialog />
 
 
-<div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
+<div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
         <label for="collectedDate">Collected Date</label>
         <input pInputText readonly [(ngModel)]="harvest.collectedDate" />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="notes">Notes</label>
         <textarea rows="5" readonly cols="30" [(ngModel)]="harvest.notes" pInputTextarea></textarea>
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="frameCount">Number of Frames</label>
         <input id="frameCount" readonly [(ngModel)]="harvest.frameCount" type="number" pInputText />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="poundsCollected">Pounds Collected</label>
         <input id="poundsCollected" readonly pInputText [(ngModel)]="harvest.poundsCollected" type="number" />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="jarDate">Jar Date</label>
         <input id="jarDate" readonly pInputText [(ngModel)]="harvest.jarDate" />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="jars">Jars</label>
         <input id="jars" type="number" pInputText readonly [(ngModel)]="harvest.jars" />
     </div>
@@ -41,7 +41,7 @@
         </ng-template>
     </p-table>
 
-    <button pButton label="Edit" class="p-mt-2" (click)="edit()"></button>
+    <button pButton label="Edit" class="mt-2" (click)="edit()"></button>
     <p-button (onClick)="confirmDelete($event)" label="Delete" severity="danger"/>
 
 

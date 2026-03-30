@@ -5,8 +5,8 @@
 }
 </style>
 <form [formGroup]="inspectionForm" (ngSubmit)="submit()">
-  <div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
+  <div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
       <label for="date" class="block">Inspection Date</label>
       <p-datepicker formControlName="date" />
       @if (inspectionForm.controls['date'].invalid && inspectionForm.controls['date'].touched) {
@@ -16,7 +16,7 @@
       }
     </div>
 
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="note">General Notes</label>
       <textarea rows="5" cols="30" pInputTextarea formControlName="note">
       </textarea>
@@ -25,7 +25,7 @@
   <hr />
   <h3>Hives</h3>
   <ng-container formArrayName="hiveNotes">
-    <div class="p-fluid p-formgrid p-grid">
+    <div class="fluid formgrid grid">
       @for (hiveForm of hiveForms.controls; track hiveForm; let index = $index) {
         <div [formGroupName]="index">
           <div class="grid formgrid">

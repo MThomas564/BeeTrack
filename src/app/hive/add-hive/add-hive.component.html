@@ -1,7 +1,7 @@
 <h2>Add new hive</h2>
 <form [formGroup]="hiveForm" (ngSubmit)="addHive()">
-  <div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
+  <div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
       <label for="name">Hive Name</label>
       <input id="name" type="text" pInputText formControlName="name" />
       @if (hiveForm.controls['name'].invalid && hiveForm.controls['name'].touched) {
@@ -10,7 +10,7 @@
         </div>
       }
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="origin">Hive Origin</label>
       <input id="origin" type="text" pInputText formControlName="origin" />
       @if (hiveForm.controls['origin'].invalid && hiveForm.controls['origin'].touched) {
@@ -19,7 +19,7 @@
         </div>
       }
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="queenYear">Year of Queen</label>
       <input id="queenYear" type="email" pInputText formControlName="queenYear" />
       @if (hiveForm.controls['queenYear'].invalid && hiveForm.controls['queenYear'].touched) {
@@ -28,8 +28,8 @@
         </div>
       }
     </div>
-    <div class="p-field p-col-12">
-      <button pButton type="submit" label="Submit" class="p-mt-2" [disabled]="hiveForm.invalid"></button>
+    <div class="field col-12">
+      <button pButton type="submit" label="Submit" class="mt-2" [disabled]="hiveForm.invalid"></button>
     </div>
   </div>
 </form>

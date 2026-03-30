@@ -1,7 +1,7 @@
 <h2>Add new sale</h2>
 <form [formGroup]="saleForm" (ngSubmit)="addSale()">
-  <div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
+  <div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
       <label for="dateOfSale">Sale Date</label>
       <p-datepicker formControlName="dateOfSale" />
       @if (saleForm.controls['dateOfSale'].invalid && saleForm.controls['dateOfSale'].touched) {
@@ -11,7 +11,7 @@
         </div>
       }
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="count">Number of Jars</label>
       <input id="count" type="number" pInputText formControlName="numberOfJars" />
       @if (saleForm.controls['numberOfJars'].invalid && saleForm.controls['numberOfJars'].touched) {
@@ -21,12 +21,12 @@
         </div>
       }
     </div>
-    <div class="p-field p-col-12 col-md-6">
+    <div class="field col-12 md:col-6">
       <label for="notes">Notes</label>
       <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
     </div>
-    <div class="p-field p-col-12">
-      <button pButton type="submit" label="Submit" class="p-mt-3" [disabled]="saleForm.invalid"></button>
+    <div class="field col-12">
+      <button pButton type="submit" label="Submit" class="mt-3" [disabled]="saleForm.invalid"></button>
     </div>
   </div>
 </form>

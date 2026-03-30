@@ -43,7 +43,26 @@ import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { providePrimeNG } from 'primeng/config';
+import { definePreset } from '@primeng/themes';
 import Aura from '@primeng/themes/aura';
+
+const BeeTrackPreset = definePreset(Aura, {
+  semantic: {
+    primary: {
+      50: '{amber.50}',
+      100: '{amber.100}',
+      200: '{amber.200}',
+      300: '{amber.300}',
+      400: '{amber.400}',
+      500: '{amber.500}',
+      600: '{amber.600}',
+      700: '{amber.700}',
+      800: '{amber.800}',
+      900: '{amber.900}',
+      950: '{amber.950}'
+    }
+  }
+});
 
 const routes: Routes = [
   { path: '', component: HivesComponent }
@@ -105,5 +124,5 @@ const routes: Routes = [
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
-        })], providers: [ConfirmationService, DataService, provideHttpClient(withInterceptorsFromDi()), providePrimeNG({ theme: { preset: Aura } })] })
+        })], providers: [ConfirmationService, DataService, provideHttpClient(withInterceptorsFromDi()), providePrimeNG({ theme: { preset: BeeTrackPreset, options: { darkModeSelector: '.app-dark' } } })] })
 export class AppModule { }

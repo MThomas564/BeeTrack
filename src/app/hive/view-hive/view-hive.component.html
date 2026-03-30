@@ -1,21 +1,21 @@
-<div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
+<div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
         <label for="name">Hive Name</label>
         <input id="name" type="text" pInputText [(ngModel)]="hive.name" readonly />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="origin">Hive Origin</label>
         <input id="origin" type="text" pInputText [(ngModel)]="hive.origin" readonly />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="queenYear">Year of Queen</label>
         <input id="queenYear" type="email" pInputText [(ngModel)]="hive.yearOfQueen" readonly />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
         <label for="archived">Archived</label>
         <p-checkbox binary="true" [(ngModel)]="hive.archived"></p-checkbox>
     </div>
-    <button pButton label="Edit" class="p-mt-2" (click)="editHive()"></button>
+    <button pButton label="Edit" class="mt-2" (click)="editHive()"></button>
 
 </div>
 

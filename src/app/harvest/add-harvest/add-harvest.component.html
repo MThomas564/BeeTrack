@@ -1,7 +1,7 @@
 <h2>Add Harvest</h2>
 <form [formGroup]="harvestForm" (ngSubmit)="addHarvest()">
-  <div class="p-fluid p-formgrid p-grid">
-    <div class="p-field p-col-12 p-md-6">
+  <div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
       <label for="collectedDate">Collected Date</label>
       <p-datepicker formControlName="collectedDate" />
       @if (harvestForm.controls['collectedDate'].invalid && harvestForm.controls['collectedDate'].touched) {
@@ -11,28 +11,28 @@
         </div>
       }
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="notes">Notes</label>
       <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="frameCount">Number of Frames</label>
       <input id="frameCount" type="number" pInputText formControlName="frameCount" />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="poundsCollected">Pounds Collected</label>
       <input id="poundsCollected" type="number" pInputText formControlName="poundsCollected" />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="jarDate">Jar Date</label>
       <p-datepicker formControlName="jarDate" />
     </div>
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="jars">Jars</label>
       <input id="jars" type="number" pInputText formControlName="jars" />
     </div>
 
-    <div class="p-field p-col-12 p-md-6">
+    <div class="field col-12 md:col-6">
       <label for="hives">Hives</label>
       <p-multiSelect id="hives" [options]="hives" formControlName="hives" optionLabel="name"
         placeholder="Select Hives" />

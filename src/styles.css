@@ -1,1 +1,16 @@
 @import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+@import url("https://rsms.me/inter/inter.css");
+
+body {
+  margin: 0;
+  font-family: "Inter var", sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-variation-settings: normal;
+  color: var(--p-text-color);
+  background-color: var(--p-surface-ground);
+}
+
+.content {
+  padding: 1.5rem;
+}
