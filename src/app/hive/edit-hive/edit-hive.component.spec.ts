@@ -1,23 +1,45 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { EditHiveComponent } from './edit-hive.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { DataService } from 'src/app/services/data/data.service';
+
+const mockHive = { id: '1', name: 'Test Hive', archived: false, origin: '', yearOfQueen: '' };
+
+const mockDataService = {
+  getHive: jest.fn().mockResolvedValue(mockHive),
+  updateHive: jest.fn().mockResolvedValue({}),
+};
 
 describe('EditHiveComponent', () => {
-  let component: EditHiveComponent;
-  let fixture: ComponentFixture<EditHiveComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditHiveComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(EditHiveComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      declarations: [EditHiveComponent],
+      imports: [
+        RouterTestingModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        ButtonModule,
+        CheckboxModule,
+        NoopAnimationsModule,
+      ],
+      providers: [
+        { provide: DataService, useValue: mockDataService },
+        { provide: ActivatedRoute, useValue: { snapshot: { paramMap: { get: () => '1' } } } },
+      ],
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(() => jest.clearAllMocks());
+
+  it('creates the component', async () => {
+    const fixture = TestBed.createComponent(EditHiveComponent);
+    await fixture.whenStable();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });
