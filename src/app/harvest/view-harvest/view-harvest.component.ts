@@ -31,8 +31,6 @@ export class ViewHarvestComponent implements OnInit {
         this.hives = item[1]
       })
     }
-    console.log(this.hives);
-    console.log(this.harvest);
   }
 
   edit(){

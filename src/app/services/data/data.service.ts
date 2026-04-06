@@ -77,23 +77,20 @@ export class DataService {
 
   async addInspectAndNotes(inspect: Partial<Inspection>, inspectNotes: Partial<InspectionNote>[]) {
     const newInpsect = await this.inspectionRepo.insert(inspect);
-
-    inspectNotes.forEach(async (item) => {
+    for (const item of inspectNotes) {
       await this.inspectionRepo.relations(newInpsect).inspectionNotes.insert(item);
-    });
+    }
     return newInpsect;
   }
 
   async deleteInspection(id: string): Promise<boolean> {
     try {
       const inspect = await this.inspectionRepo.findId(id);
-      console.log(inspect);
       const inspectNotes = await this.inspectionNoteRepo.find({ where: { inspection: inspect } });
-      // console.log(inspectNotes)
+      for (const item of inspectNotes) {
+        await this.inspectionNoteRepo.delete(item);
+      }
       await this.inspectionRepo.delete(inspect);
-      inspectNotes.forEach(async (item) => {
-        // await this.inspectionNoteRepo.delete(item);
-      })
       return true;
     }
     catch {
@@ -103,9 +100,9 @@ export class DataService {
 
   async addHoneyHarvest(harvest: Partial<Harvest>, hives: Hive[]) {
     const h = await this.harvestRepo.insert(harvest);
-    hives.forEach(async (element) => {
-      await this.harvestHiveRepo.insert({ harvestId: h.id, hiveId: element.id })
-    });
+    for (const element of hives) {
+      await this.harvestHiveRepo.insert({ harvestId: h.id, hiveId: element.id });
+    }
   }
 
   async getHarvests() {
@@ -114,18 +111,16 @@ export class DataService {
 
   async getHarvest(id: string): Promise<[Harvest, Hive[]]> {
     const harvest = await this.harvestRepo.findId(id);
-    let hiveHarvests = await this.harvestHiveRepo.find({ where: { harvestId: harvest.id } })
+    const hiveHarvests = await this.harvestHiveRepo.find({ where: { harvestId: harvest.id } });
     const hives: Hive[] = [];
-    hiveHarvests.forEach(async (item) => {
-      let h = await this.hiveRepo.findId(item.hiveId);
-      hives.push(h);
-    })
+    for (const item of hiveHarvests) {
+      hives.push(await this.hiveRepo.findId(item.hiveId));
+    }
     return [harvest, hives];
   }
 
   async getHarvestsByHive(id: string) {
     const h = await this.hiveRepo.findId(id);
-    console.log(h);
     const hToH = await this.harvestHiveRepo.find({ where: { hiveId: h.id } });
     const harvestIds = hToH.map(o => o.harvestId)
     const harvests = await this.harvestRepo.find({ where: { id: { $in: harvestIds } } });
@@ -138,21 +133,21 @@ export class DataService {
     let harvestToHives = await this.harvestHiveRepo.find({ where: { harvestId: h.id } });
     const hivesToAdd = hives.filter(itemIn => !harvestToHives.some(item => item.hiveId === itemIn.id));
     const hivesToRemove = harvestToHives.filter(item => !hives.some(inItem => inItem.id === item.hiveId))
-    hivesToAdd.forEach(async (item) => {
+    for (const item of hivesToAdd) {
       await this.harvestHiveRepo.insert({ harvestId: h.id, hiveId: item.id });
-    })
-    hivesToRemove.forEach(async (item) => {
+    }
+    for (const item of hivesToRemove) {
       await this.harvestHiveRepo.delete(item);
-    })
+    }
   }
 
   async deleteHarvest(id: string) {
     try {
       const harvest = await this.harvestRepo.findId(id);
       const harvestHives = await this.harvestHiveRepo.find({ where: { harvestId: harvest.id } });
-      harvestHives.forEach(async (item) =>{
+      for (const item of harvestHives) {
         await this.harvestHiveRepo.delete(item);
-      })
+      }
       await this.harvestRepo.delete(harvest);
       return true;
     }

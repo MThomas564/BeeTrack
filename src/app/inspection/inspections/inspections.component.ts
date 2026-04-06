@@ -15,7 +15,6 @@ export class InspectionsComponent implements OnInit {
 
   async ngOnInit() {
     await this.dataService.getInspections().then((items) => this.inspections = items);
-    console.log(this.inspections)
   }
 
   viewInspection(id:any){

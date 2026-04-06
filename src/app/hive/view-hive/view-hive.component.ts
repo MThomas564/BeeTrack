@@ -28,8 +28,6 @@ export class ViewHiveComponent implements OnInit {
       await this.dataService.getHive(this.id).then((item) => this.hive = item);
       await this.dataService.getInspectionNotesByHive(this.id).then((item) => this.notes = item )
       await this.dataService.getHarvestsByHive(this.hive.id).then((item) => this.harvests=item);
-      console.log(this.hive);
-      console.log(this.notes);
     }
   }
 

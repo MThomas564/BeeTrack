@@ -18,7 +18,7 @@ export class SalesComponent implements OnInit {
   
   async ngOnInit(): Promise<void> {
     await this.dataService.getJarSales().then((item ) => this.sales = item);
-    await this.dataService.getTotalJarsSold().then((item) => {this.totalJars += item; console.log(item)});
+    await this.dataService.getTotalJarsSold().then((item) => {this.totalJars += item;});
   }
 
 

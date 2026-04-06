@@ -26,7 +26,6 @@ export class ViewInspectionComponent implements OnInit {
 
       await this.dataService.getInspection(this.id).then((item) => this.inspection = item);
       this.inspectionNotes = this.inspection.inspectionNotes as InspectionNote[];
-      console.log(this.inspection);
     }
   }
 
