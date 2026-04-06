@@ -9,7 +9,7 @@
 <h3>Hive Notes:</h3>
 
 
-@for (inspect of inspectionNotes; track inspect) {
+@for (inspect of inspectionNotes; track inspect.id) {
   <div>
     <p-card header="{{inspect.hive.name}}">
       <div style="display: flex; flex-wrap: wrap; gap: 5px;">

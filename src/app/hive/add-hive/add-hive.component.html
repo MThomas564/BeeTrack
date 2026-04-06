@@ -21,7 +21,7 @@
     </div>
     <div class="field col-12 md:col-6">
       <label for="queenYear">Year of Queen</label>
-      <input id="queenYear" type="email" pInputText formControlName="queenYear" />
+      <input id="queenYear" type="number" pInputText formControlName="queenYear" />
       @if (hiveForm.controls['queenYear'].invalid && hiveForm.controls['queenYear'].touched) {
         <div class="p-error">
           Year of Queen is required.

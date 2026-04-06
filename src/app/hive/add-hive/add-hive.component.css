@@ -1,7 +1,7 @@
-::ng-deep.hive-form {
+::ng-deep .hive-form {
     width: 30%;
   }
-  
-  ::ng-deep.p-inputtext {
+
+  ::ng-deep .p-inputtext {
     width: 100%;
   }
