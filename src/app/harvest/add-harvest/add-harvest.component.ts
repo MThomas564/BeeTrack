@@ -14,7 +14,7 @@ import { Hive } from 'src/shared/hive';
 export class AddHarvestComponent implements OnInit {
   private _router:Router = inject(Router);
   fb: FormBuilder = new FormBuilder();
-  hives: Hive[] = [];
+  groupedHives: { label: string, items: Hive[] }[] = [];
 
   harvestForm = this.fb.group({
     notes: [''],
@@ -33,7 +33,7 @@ export class AddHarvestComponent implements OnInit {
   }
 
   private async loadHives(){
-    await this.dataService.getHives().then((items) => this.hives = items);
+    this.groupedHives = await this.dataService.getGroupedHives();
   }
 
 

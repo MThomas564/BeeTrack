@@ -30,15 +30,23 @@ export class DataService {
   }
 
   async getHives() {
-    return await this.hiveRepo.find();
+    return await this.hiveRepo.find({ orderBy: { name: "asc" } });
   }
 
   async getArchivedHives() {
-    return await this.hiveRepo.find({ where: { archived: true } })
+    return await this.hiveRepo.find({ where: { archived: true }, orderBy: { name: "asc" } })
   }
 
   async getActiveHives() {
-    return await this.hiveRepo.find({ where: { archived: false } });
+    return await this.hiveRepo.find({ where: { archived: false }, orderBy: { name: "asc" } });
+  }
+
+  async getGroupedHives() {
+    const all = await this.hiveRepo.find({ orderBy: { name: "asc" } });
+    return [
+      { label: 'Active', items: all.filter(h => !h.archived) },
+      { label: 'Inactive', items: all.filter(h => h.archived) }
+    ];
   }
 
   async updateHive(hive: Hive) {
