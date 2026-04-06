@@ -6,9 +6,10 @@ import { DataService } from 'src/app/services/data/data.service';
 import { JarSale } from 'src/shared/jarSale';
 
 @Component({
-  selector: 'app-add-sale',
-  templateUrl: './add-sale.component.html',
-  styleUrl: './add-sale.component.css'
+    selector: 'app-add-sale',
+    templateUrl: './add-sale.component.html',
+    styleUrl: './add-sale.component.css',
+    standalone: false
 })
 export class AddSaleComponent {
 private _router: Router = inject(Router)

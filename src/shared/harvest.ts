@@ -1,6 +1,5 @@
 import { Entity, Fields, Relations, Validators } from "remult";
 import { Hive } from "./hive";
-import { fieldDbName } from "remult/src/filter/filter-consumer-bridge-to-sql-request";
 import { HarvestToHives } from "./HarvestToHive";
 
 @Entity('harvests', {

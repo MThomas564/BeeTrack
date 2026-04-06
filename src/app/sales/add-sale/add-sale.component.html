@@ -1,28 +1,32 @@
 <h2>Add new sale</h2>
 <form [formGroup]="saleForm" (ngSubmit)="addSale()">
-    <div class="p-fluid p-formgrid p-grid">
-        <div class="p-field p-col-12 p-md-6">
-            <label for="dateOfSale">Sale Date</label>
-            <p-calendar formControlName="dateOfSale" />
-            <div *ngIf="saleForm.controls['dateOfSale'].invalid && saleForm.controls['dateOfSale'].touched"
-                class="p-error">
-                Date of Sale is required.
-            </div>
+  <div class="fluid formgrid grid">
+    <div class="field col-12 md:col-6">
+      <label for="dateOfSale">Sale Date</label>
+      <p-datepicker formControlName="dateOfSale" />
+      @if (saleForm.controls['dateOfSale'].invalid && saleForm.controls['dateOfSale'].touched) {
+        <div
+          class="p-error">
+          Date of Sale is required.
         </div>
-        <div class="p-field p-col-12 p-md-6">
-            <label for="count">Number of Jars</label>
-            <input id="count" type="number" pInputText formControlName="numberOfJars" />
-            <div *ngIf="saleForm.controls['numberOfJars'].invalid && saleForm.controls['numberOfJars'].touched"
-                class="p-error">
-                Number of Jars is required.
-            </div>
-        </div>
-        <div class="p-field p-col-12 col-md-6">
-            <label for="notes">Notes</label>
-            <textarea rows="5" cols="30" pInputTextarea formControlName="notes"></textarea>
-        </div>
-        <div class="p-field p-col-12">
-            <button pButton type="submit" label="Submit" class="p-mt-3" [disabled]="saleForm.invalid"></button>
-        </div>
+      }
     </div>
+    <div class="field col-12 md:col-6">
+      <label for="count">Number of Jars</label>
+      <input id="count" type="number" pInputText formControlName="numberOfJars" />
+      @if (saleForm.controls['numberOfJars'].invalid && saleForm.controls['numberOfJars'].touched) {
+        <div
+          class="p-error">
+          Number of Jars is required.
+        </div>
+      }
+    </div>
+    <div class="field col-12 md:col-6">
+      <label for="notes">Notes</label>
+      <textarea rows="5" cols="30" class="p-textarea w-full" formControlName="notes"></textarea>
+    </div>
+    <div class="field col-12">
+      <button pButton type="submit" label="Submit" class="mt-3" [disabled]="saleForm.invalid"></button>
+    </div>
+  </div>
 </form>

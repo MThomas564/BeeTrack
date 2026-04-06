@@ -1,7 +1,7 @@
-:host >>> .hive-form {
+::ng-deep .hive-form {
     width: 30%;
   }
-  
-  :host >>> .p-inputtext {
+
+  ::ng-deep .p-inputtext {
     width: 100%;
   }

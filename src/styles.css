@@ -1,1 +1,33 @@
 @import "primeicons/primeicons.css";
+@import url("https://rsms.me/inter/inter.css");
+
+body {
+  margin: 0;
+  font-family: "Inter var", sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-variation-settings: normal;
+  color: var(--p-text-color);
+  background-color: var(--p-surface-ground);
+}
+
+.content {
+  padding: 1.5rem;
+}
+
+/* PrimeNG v21 no longer sets display:block or width:100% on inputs/components.
+   Restore stacked label-above-input layout within .field containers. */
+.field .p-inputtext,
+.field .p-textarea {
+  display: block;
+  width: 100%;
+}
+
+.field p-datepicker,
+.field p-select,
+.field p-multiselect,
+.field p-inputnumber,
+.field p-checkbox,
+.field p-calendar {
+  display: flex;
+  width: 100%;
+}

@@ -1,39 +1,43 @@
 <div>
-    <div style="width: 100%; display: flex; justify-content: space-between; align-items: baseline;">
-        <h2>Hives</h2>
-        <p-button [routerLink]="'hives/add'">Add Hive</p-button>
-    </div>
-    <p-table [value]="hives" [responsiveLayout]="'scroll'" [paginator]="true" [rows]="10">
-        <ng-template pTemplate="caption">
-            <div class="flex align-items-center justify-content-between">
-                <p-button (click)="viewAll()" size="small">View all</p-button>
-                <p-button (click)="viewActive()" size="small">View active</p-button>
-                <p-button (click)="viewArchived()" size="small">View archived</p-button>
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Name</th>
-                <!-- <th>Origin</th>
-                <th>Year of queen</th> -->
-                <th *ngIf="showingAll">Archived</th>
-                <th>Actions</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-hive>
-            <tr>
-                <td>{{hive.name}}</td>
-                <!-- <td>{{hive.origin}}</td>
-                <td>{{hive.yearOfQueen}}</td> -->
-                <td *ngIf="showingAll">{{hive.archived}}</td>
-                <td>
-                    <div class="p-buttonset">
-                        <button pButton type="button" icon="pi pi-eye" class="p-button-transparent" (click)="viewHive(hive.id)"></button>
-                        <button pButton type="button" icon="pi pi-pencil" class="" (click)="editHive(hive.id)"></button>
-                      </div>
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+  <div style="width: 100%; display: flex; justify-content: space-between; align-items: baseline;">
+    <h2>Hives</h2>
+    <p-button [routerLink]="'hives/add'">Add Hive</p-button>
+  </div>
+  <p-table [value]="hives" [responsiveLayout]="'scroll'" [paginator]="true" [rows]="10">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <p-button (click)="viewAll()" size="small">View all</p-button>
+        <p-button (click)="viewActive()" size="small">View active</p-button>
+        <p-button (click)="viewArchived()" size="small">View archived</p-button>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <!-- <th>Origin</th>
+        <th>Year of queen</th> -->
+        @if (showingAll) {
+          <th>Archived</th>
+        }
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-hive>
+      <tr>
+        <td>{{hive.name}}</td>
+        <!-- <td>{{hive.origin}}</td>
+        <td>{{hive.yearOfQueen}}</td> -->
+        @if (showingAll) {
+          <td>{{hive.archived}}</td>
+        }
+        <td>
+          <div class="p-buttonset">
+            <button pButton type="button" icon="pi pi-eye" class="p-button-transparent" (click)="viewHive(hive.id)"></button>
+            <button pButton type="button" icon="pi pi-pencil" class="" (click)="editHive(hive.id)"></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 
 </div>

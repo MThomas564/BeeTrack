@@ -6,9 +6,10 @@ import { Harvest } from 'src/shared/harvest';
 import { Hive } from 'src/shared/hive';
 
 @Component({
-  selector: 'app-view-harvest',
-  templateUrl: './view-harvest.component.html',
-  styleUrl: './view-harvest.component.css'
+    selector: 'app-view-harvest',
+    templateUrl: './view-harvest.component.html',
+    styleUrl: './view-harvest.component.css',
+    standalone: false
 })
 export class ViewHarvestComponent implements OnInit {
 

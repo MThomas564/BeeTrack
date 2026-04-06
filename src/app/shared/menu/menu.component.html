@@ -1,10 +1,16 @@
 <p-menubar [model]="items">
     <ng-template pTemplate="start">
         <a [routerLink]="['']">
-      <img src="assets/logo.png" alt="logo" height="40" class="p-mr-2">
+      <img src="assets/logo.png" alt="logo" height="40" class="mr-2">
     </a>
     </ng-template>
-    <!-- <ng-template pTemplate="item" let-item>
-      <a [routerLink]="item.routerLink">{{item.label}}</a>
-    </ng-template> -->
+    <ng-template pTemplate="end">
+      <p-button
+        [icon]="darkMode ? 'pi pi-sun' : 'pi pi-moon'"
+        [rounded]="true"
+        [text]="true"
+        (onClick)="toggleDarkMode()"
+        [attr.aria-label]="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+      />
+    </ng-template>
   </p-menubar>

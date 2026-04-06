@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Hive } from 'src/shared/hive';
@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
-  selector: 'app-add-hive',
-  templateUrl: './add-hive.component.html',
-  styleUrls: ['./add-hive.component.css']
+    selector: 'app-add-hive',
+    templateUrl: './add-hive.component.html',
+    styleUrls: ['./add-hive.component.css'],
+    standalone: false
 })
 export class AddHiveComponent implements OnInit {
   private _router: Router = inject(Router)

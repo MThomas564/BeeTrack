@@ -5,9 +5,10 @@ import { DataService } from 'src/app/services/data/data.service';
 import { Harvest } from 'src/shared/harvest';
 
 @Component({
-  selector: 'app-harvests',
-  templateUrl: './harvests.component.html',
-  styleUrl: './harvests.component.css'
+    selector: 'app-harvests',
+    templateUrl: './harvests.component.html',
+    styleUrl: './harvests.component.css',
+    standalone: false
 })
 export class HarvestsComponent {
   constructor(private router: Router, private dataService:DataService) { } 

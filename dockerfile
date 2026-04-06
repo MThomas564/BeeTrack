@@ -1,5 +1,5 @@
 # Stage 1: Build the Angular app
-FROM node:18 AS build
+FROM node:22 AS build
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Compile the server TypeScript files
-FROM node:18 AS server-build
+FROM node:22 AS server-build
 
 WORKDIR /app
 
@@ -39,7 +39,7 @@ RUN npm install remult express
 RUN tsc -p tsconfig.server.json
 
 # Stage 3: Serve the app with Express
-FROM node:18 AS runtime
+FROM node:22 AS runtime
 
 WORKDIR /app
 

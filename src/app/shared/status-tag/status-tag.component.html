@@ -1,7 +1,10 @@
 <div class="status-tag">
-    <span class="name">{{ name }}:</span>
-    <span class="value">
-      <ng-container *ngIf="value; else cross">&#10004;</ng-container>
-      <ng-template #cross>&#10008;</ng-template>
-    </span>
+  <span class="name">{{ name }}:</span>
+  <span class="value">
+    @if (value) {
+      &#10004;
+    } @else {
+      &#10008;
+    }
+  </span>
 </div>

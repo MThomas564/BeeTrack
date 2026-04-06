@@ -6,9 +6,10 @@ import { Hive } from 'src/shared/hive';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
-  selector: 'app-edit-hive',
-  templateUrl: './edit-hive.component.html',
-  styleUrl: './edit-hive.component.css'
+    selector: 'app-edit-hive',
+    templateUrl: './edit-hive.component.html',
+    styleUrl: './edit-hive.component.css',
+    standalone: false
 })
 export class EditHiveComponent implements OnInit {
   public id: string = '';

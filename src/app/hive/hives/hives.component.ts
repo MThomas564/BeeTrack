@@ -1,14 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { Hive } from 'src/shared/hive';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data/data.service';
 
 @Component({
-  selector: 'app-hives',
-  templateUrl: './hives.component.html',
-  styleUrls: ['./hives.component.css']
+    selector: 'app-hives',
+    templateUrl: './hives.component.html',
+    styleUrls: ['./hives.component.css'],
+    standalone: false
 })
 export class HivesComponent implements OnInit {
   constructor(private router: Router, private dataService:DataService) { } 

@@ -6,9 +6,10 @@ import { Harvest } from 'src/shared/harvest';
 import { Hive } from 'src/shared/hive';
 
 @Component({
-  selector: 'app-add-harvest',
-  templateUrl: './add-harvest.component.html',
-  styleUrl: './add-harvest.component.css'
+    selector: 'app-add-harvest',
+    templateUrl: './add-harvest.component.html',
+    styleUrl: './add-harvest.component.css',
+    standalone: false
 })
 export class AddHarvestComponent implements OnInit {
   private _router:Router = inject(Router);

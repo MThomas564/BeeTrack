@@ -1,7 +1,7 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
@@ -9,9 +9,8 @@ import { TableModule } from 'primeng/table';
 import { MenubarModule } from 'primeng/menubar'
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { CalendarModule } from 'primeng/calendar';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { DropdownModule } from 'primeng/dropdown';
+import { DatePickerModule } from 'primeng/datepicker';
+import { Select } from 'primeng/select';
 import { CardModule } from 'primeng/card';
 import { DragDropModule } from 'primeng/dragdrop'
 import { CheckboxModule } from 'primeng/checkbox';
@@ -42,6 +41,27 @@ import { AddSaleComponent } from './sales/add-sale/add-sale.component';
 import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { providePrimeNG } from 'primeng/config';
+import { definePreset } from '@primeuix/themes';
+import Aura from '@primeuix/themes/aura';
+
+const BeeTrackPreset = definePreset(Aura, {
+  semantic: {
+    primary: {
+      50: '{amber.50}',
+      100: '{amber.100}',
+      200: '{amber.200}',
+      300: '{amber.300}',
+      400: '{amber.400}',
+      500: '{amber.500}',
+      600: '{amber.600}',
+      700: '{amber.700}',
+      800: '{amber.800}',
+      900: '{amber.900}',
+      950: '{amber.950}'
+    }
+  }
+});
 
 const routes: Routes = [
   { path: '', component: HivesComponent }
@@ -60,55 +80,47 @@ const routes: Routes = [
   , { path: 'sales/:id', component: EditSaleComponent}
 ];
 
-@NgModule({
-  declarations: [AppComponent
-    , MenuComponent
-    , HivesComponent
-    , AddHiveComponent
-    , InspectionsComponent
-    , ViewHiveComponent
-    , AddInspectionComponent
-    , ViewInspectionComponent
-    , EditHiveComponent
-    , StatusTagComponent
-    , HarvestsComponent
-    , AddHarvestComponent
-    , DateFormatPipe
-    , ViewHarvestComponent
-    , EditHarvestComponent
-    , SalesComponent
-    , AddSaleComponent
-    , EditSaleComponent
-  ],
-  imports: [
-    BrowserModule
-    , CommonModule
-    , HttpClientModule
-    , FormsModule
-    , RouterModule.forRoot(routes)
-    , TableModule
-    , MenubarModule
-    , ButtonModule
-    , InputTextModule
-    , ReactiveFormsModule
-    , CalendarModule
-    , BrowserAnimationsModule
-    , InputTextareaModule
-    , DropdownModule
-    , CardModule
-    , DragDropModule
-    , CheckboxModule
-    , ConfirmDialogModule
-    , TagModule
-    , MultiSelectModule
-    , AccordionModule, ServiceWorkerModule.register('ngsw-worker.js', {
-  enabled: !isDevMode(),
-  // Register the ServiceWorker as soon as the application is stable
-  // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'
-})
-  ],
-  providers: [ConfirmationService, DataService],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [AppComponent,
+        MenuComponent,
+        HivesComponent,
+        AddHiveComponent,
+        InspectionsComponent,
+        ViewHiveComponent,
+        AddInspectionComponent,
+        ViewInspectionComponent,
+        EditHiveComponent,
+        StatusTagComponent,
+        HarvestsComponent,
+        AddHarvestComponent,
+        DateFormatPipe,
+        ViewHarvestComponent,
+        EditHarvestComponent,
+        SalesComponent,
+        AddSaleComponent,
+        EditSaleComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        CommonModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
+        TableModule,
+        MenubarModule,
+        ButtonModule,
+        InputTextModule,
+        ReactiveFormsModule,
+        DatePickerModule,
+        BrowserAnimationsModule,
+        Select,
+        CardModule,
+        DragDropModule,
+        CheckboxModule,
+        ConfirmDialogModule,
+        TagModule,
+        MultiSelectModule,
+        AccordionModule, ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        })], providers: [ConfirmationService, DataService, provideHttpClient(withInterceptorsFromDi()), providePrimeNG({ theme: { preset: BeeTrackPreset, options: { darkModeSelector: '.app-dark' } } })] })
 export class AppModule { }
