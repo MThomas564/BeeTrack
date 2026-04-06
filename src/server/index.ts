@@ -20,7 +20,7 @@ const app = express();
 app.use(compression())
 
 // Serve static files from the Angular app
-app.use(express.static(path.join(__dirname, '../bee-track')));
+app.use(express.static(path.join(__dirname, '../bee-track/browser')));
 
 // Set up Remult middleware
 app.use(api);
@@ -30,7 +30,7 @@ app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../bee-track/index.html'));
+  res.sendFile(path.join(__dirname, '../bee-track/browser/index.html'));
 });
 
 const port = process.env['PORT'] || 3000;
