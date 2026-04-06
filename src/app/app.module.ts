@@ -10,8 +10,7 @@ import { MenubarModule } from 'primeng/menubar'
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DatePickerModule } from 'primeng/datepicker';
-import { InputTextarea } from 'primeng/inputtextarea';
-import { DropdownModule } from 'primeng/dropdown';
+import { Select } from 'primeng/select';
 import { CardModule } from 'primeng/card';
 import { DragDropModule } from 'primeng/dragdrop'
 import { CheckboxModule } from 'primeng/checkbox';
@@ -43,8 +42,8 @@ import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { providePrimeNG } from 'primeng/config';
-import { definePreset } from '@primeng/themes';
-import Aura from '@primeng/themes/aura';
+import { definePreset } from '@primeuix/themes';
+import Aura from '@primeuix/themes/aura';
 
 const BeeTrackPreset = definePreset(Aura, {
   semantic: {
@@ -111,8 +110,7 @@ const routes: Routes = [
         ReactiveFormsModule,
         DatePickerModule,
         BrowserAnimationsModule,
-        InputTextarea,
-        DropdownModule,
+        Select,
         CardModule,
         DragDropModule,
         CheckboxModule,

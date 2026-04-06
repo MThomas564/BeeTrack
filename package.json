@@ -27,7 +27,7 @@
     "@angular/router": "^21.2.5",
     "@angular/service-worker": "^21.2.5",
     "@popperjs/core": "^2.11.6",
-    "@primeng/themes": "^21.0.4",
+    "@primeuix/themes": "^2.0.3",
     "compression": "^1.7.4",
     "express": "^4.18.2",
     "helmet": "^7.1.0",

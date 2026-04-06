@@ -14,3 +14,21 @@ body {
 .content {
   padding: 1.5rem;
 }
+
+/* PrimeNG v21 no longer sets display:block or width:100% on inputs/components.
+   Restore stacked label-above-input layout within .field containers. */
+.field .p-inputtext,
+.field .p-textarea {
+  display: block;
+  width: 100%;
+}
+
+.field p-datepicker,
+.field p-select,
+.field p-multiselect,
+.field p-inputnumber,
+.field p-checkbox,
+.field p-calendar {
+  display: flex;
+  width: 100%;
+}

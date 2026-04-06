@@ -13,9 +13,9 @@
   <div>
     <p-card header="{{inspect.hive.name}}">
       <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-        <p-tag value="Queen" [severity]="inspect.queen? 'success' : 'warning' "/>
+        <p-tag value="Queen" [severity]="inspect.queen? 'success' : 'warn' "/>
         <p-tag value="Eggs" [severity]="inspect.eggs? 'success' : 'danger'" />
-        <p-tag value="Bias" [severity]="inspect.bias ? 'success' : 'warning'" />
+        <p-tag value="Bias" [severity]="inspect.bias ? 'success' : 'warn'" />
         <p-tag value="No Eggs Or Brood" [severity]="inspect.noEggsOrBrood? 'danger':'success'" />
         <p-tag value="Swarm Cells" [severity]="inspect.swarmCells ? 'danger' :'success'"/>
         <p-tag value="Supercedure Cells" [severity]="inspect.supercedureCells? 'danger':'success'"/>
