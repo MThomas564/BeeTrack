@@ -16,7 +16,7 @@ export class AddInspectionComponent implements OnInit {
   private _router: Router = inject(Router)
   constructor(private dataService:DataService){}
   async ngOnInit(): Promise<void> {
-    await this.dataService.getHives().then((items) => this.hives = items);
+    await this.dataService.getActiveHives().then((items) => this.hives = items);
     this.addHiveNote();
   }
 

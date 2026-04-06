@@ -19,7 +19,7 @@ export class EditHarvestComponent implements OnInit {
   public id: string = '';
   harvest: Harvest = new Harvest();
   selectedHives: Hive[] = [];
-  hives: Hive[] = [];
+  groupedHives: { label: string, items: Hive[] }[] = [];
 
   fb: FormBuilder = new FormBuilder();
   harvestForm: FormGroup;
@@ -43,7 +43,7 @@ export class EditHarvestComponent implements OnInit {
   }
 
   private async loadHives() {
-    await this.dataService.getHives().then((item) => this.hives = item);
+    await this.dataService.getGroupedHives().then((groups) => this.groupedHives = groups);
   }
   private async loadHarvest(): Promise<void> {
     const idInput = this.route.snapshot.paramMap.get('id');

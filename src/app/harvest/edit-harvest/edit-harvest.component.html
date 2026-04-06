@@ -33,8 +33,8 @@
 
     <div class="field col-12 md:col-6">
       <label for="hives">Hives</label>
-      <p-multiSelect [options]="hives" formControlName="hives" optionLabel="name" [dataKey]="'id'"
-        placeholder="Select Hives">
+      <p-multiSelect [options]="groupedHives" formControlName="hives" optionLabel="name" [dataKey]="'id'"
+        [group]="true" optionGroupLabel="label" optionGroupChildren="items" placeholder="Select Hives">
       </p-multiSelect>
 
     </div>
