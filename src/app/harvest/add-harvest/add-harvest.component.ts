@@ -33,7 +33,7 @@ export class AddHarvestComponent implements OnInit {
   }
 
   private async loadHives(){
-    await this.dataService.getGroupedHives().then((groups) => this.groupedHives = groups);
+    this.groupedHives = await this.dataService.getGroupedHives();
   }
 
 

@@ -43,7 +43,7 @@ export class EditHarvestComponent implements OnInit {
   }
 
   private async loadHives() {
-    await this.dataService.getGroupedHives().then((groups) => this.groupedHives = groups);
+    this.groupedHives = await this.dataService.getGroupedHives();
   }
   private async loadHarvest(): Promise<void> {
     const idInput = this.route.snapshot.paramMap.get('id');

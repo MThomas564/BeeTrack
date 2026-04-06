@@ -42,13 +42,10 @@ export class DataService {
   }
 
   async getGroupedHives() {
-    const [active, inactive] = await Promise.all([
-      this.hiveRepo.find({ where: { archived: false }, orderBy: { name: "asc" } }),
-      this.hiveRepo.find({ where: { archived: true }, orderBy: { name: "asc" } })
-    ]);
+    const all = await this.hiveRepo.find({ orderBy: { name: "asc" } });
     return [
-      { label: 'Active', items: active },
-      { label: 'Inactive', items: inactive }
+      { label: 'Active', items: all.filter(h => !h.archived) },
+      { label: 'Inactive', items: all.filter(h => h.archived) }
     ];
   }
 
