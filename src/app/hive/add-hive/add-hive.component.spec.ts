@@ -1,23 +1,38 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AddHiveComponent } from './add-hive.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { CheckboxModule } from 'primeng/checkbox';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { DataService } from 'src/app/services/data/data.service';
+
+const mockDataService = {
+  addHive: jest.fn().mockResolvedValue({}),
+};
 
 describe('AddHiveComponent', () => {
-  let component: AddHiveComponent;
-  let fixture: ComponentFixture<AddHiveComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddHiveComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(AddHiveComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      declarations: [AddHiveComponent],
+      imports: [
+        RouterTestingModule,
+        ReactiveFormsModule,
+        InputTextModule,
+        ButtonModule,
+        CheckboxModule,
+        NoopAnimationsModule,
+      ],
+      providers: [{ provide: DataService, useValue: mockDataService }],
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  afterEach(() => jest.clearAllMocks());
+
+  it('creates the component', () => {
+    const fixture = TestBed.createComponent(AddHiveComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

@@ -7,10 +7,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install Angular CLI globally
-RUN npm install -g @angular/cli
+RUN npm install --legacy-peer-deps -g @angular/cli
 
 # Install dependencies
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # Copy the Angular project files
 COPY . .
@@ -25,15 +25,15 @@ WORKDIR /app
 
 # Copy the package files and install TypeScript globally
 COPY package*.json ./
-RUN npm install
-RUN npm install -g typescript ts-node @types/node
+RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps -g typescript ts-node @types/node
 
 # Copy the source files and tsconfig.server.json
 COPY src src
 COPY tsconfig.server.json ./
 
 # Install server dependencies
-RUN npm install remult express
+RUN npm install --legacy-peer-deps remult express
 
 # Compile the server TypeScript files
 RUN tsc -p tsconfig.server.json
@@ -47,7 +47,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies for runtime
-RUN npm install --only=production
+RUN npm install --legacy-peer-deps --only=production
 
 # Copy the built Angular app and server files from the build stages
 COPY --from=build /app/dist /app/dist

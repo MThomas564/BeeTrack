@@ -16,7 +16,6 @@ const dbPass = process.env['POSTGRES_PASSWORD']
 const dbName = process.env['POSTGRES_DB']
 
 const conString = `postgres://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}`;
-console.log(conString);
 
 export const api = remultExpress({
   dataProvider: dbHost ? createPostgresDataProvider({

@@ -39,8 +39,6 @@ export class AddHarvestComponent implements OnInit {
 
   async addHarvest(){
     const harvest: Partial<Harvest> = this.harvestForm.value as Harvest;
-    console.log(harvest);
-    let selectHives = this.harvestForm.value['hives']
     await this.dataService.addHoneyHarvest(harvest, this.harvestForm.value['hives'] as Hive[]);
     this._router.navigateByUrl('harvests');
   }

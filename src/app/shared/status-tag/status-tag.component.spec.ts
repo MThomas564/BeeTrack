@@ -1,23 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { StatusTagComponent } from './status-tag.component';
+import { TagModule } from 'primeng/tag';
 
 describe('StatusTagComponent', () => {
-  let component: StatusTagComponent;
-  let fixture: ComponentFixture<StatusTagComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StatusTagComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(StatusTagComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      declarations: [StatusTagComponent],
+      imports: [TagModule],
+    }).compileComponents();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('creates the component', () => {
+    const fixture = TestBed.createComponent(StatusTagComponent);
+    fixture.componentInstance.name = 'Queen';
+    fixture.componentInstance.value = true;
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

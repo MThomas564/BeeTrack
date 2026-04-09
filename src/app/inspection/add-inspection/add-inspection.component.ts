@@ -34,7 +34,6 @@ export class AddInspectionComponent implements OnInit {
   }
 
   async submit(){
-    console.log(this.inspectionForm.value)
 
     var hiveNotes: InspectionNote[] = this.inspectionForm.value['hiveNotes'] as InspectionNote[]
     let inspect: Partial<Inspection> = {
