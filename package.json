@@ -26,7 +26,7 @@
     "@angular/core": "^21.2.5",
     "@angular/forms": "^21.2.5",
     "@angular/platform-browser": "^21.2.5",
-    "@angular/platform-browser-dynamic": "^21.2.5",
+    "@angular/platform-browser-dynamic": "^21.2.8",
     "@angular/router": "^21.2.5",
     "@angular/service-worker": "^21.2.5",
     "@popperjs/core": "^2.11.6",
