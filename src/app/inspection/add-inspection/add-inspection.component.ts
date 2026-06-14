@@ -63,7 +63,7 @@ export class AddInspectionComponent implements OnInit {
     this.hiveForms.push(hnForm)
     setTimeout(() =>
       this._document.documentElement.scrollTo({ top: this._document.documentElement.scrollHeight, behavior: 'smooth' })
-    );
+    , 0);
   }
 
   removeHiveNote(hnIndex: number){
