@@ -76,7 +76,9 @@ describe('AddInspectionComponent', () => {
     fixture.componentInstance.addHiveNote();
     jest.runAllTimers();
 
-    expect(scrollToSpy).toHaveBeenCalledWith(0, document.documentElement.scrollHeight);
+    expect(scrollToSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
+    );
 
     jest.useRealTimers();
     scrollToSpy.mockRestore();

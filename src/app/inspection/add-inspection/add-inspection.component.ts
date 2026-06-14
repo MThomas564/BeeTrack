@@ -61,7 +61,9 @@ export class AddInspectionComponent implements OnInit {
       noEggsOrBrood: []
     });
     this.hiveForms.push(hnForm)
-    setTimeout(() => this._document.documentElement.scrollTo(0, this._document.documentElement.scrollHeight));
+    setTimeout(() =>
+      this._document.documentElement.scrollTo({ top: this._document.documentElement.scrollHeight, behavior: 'smooth' })
+    );
   }
 
   removeHiveNote(hnIndex: number){
