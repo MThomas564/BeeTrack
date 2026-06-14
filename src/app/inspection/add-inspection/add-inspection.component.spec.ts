@@ -61,6 +61,27 @@ describe('AddInspectionComponent', () => {
     expect(fixture.componentInstance.hiveForms.length).toBe(2);
   });
 
+  it('scrolls to bottom of page after addHiveNote is called', async () => {
+    jest.useFakeTimers();
+    Object.defineProperty(document.documentElement, 'scrollTo', {
+      value: jest.fn(),
+      writable: true,
+      configurable: true,
+    });
+    const scrollToSpy = jest.spyOn(document.documentElement, 'scrollTo');
+
+    const fixture = await createComponent();
+    scrollToSpy.mockClear();
+
+    fixture.componentInstance.addHiveNote();
+    jest.runAllTimers();
+
+    expect(scrollToSpy).toHaveBeenCalledWith(0, document.documentElement.scrollHeight);
+
+    jest.useRealTimers();
+    scrollToSpy.mockRestore();
+  });
+
   it('removes a hive note when removeHiveNote is called', async () => {
     const fixture = await createComponent();
     fixture.componentInstance.addHiveNote();

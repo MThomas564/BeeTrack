@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 import { DataService } from 'src/app/services/data/data.service';
 import { Hive } from 'src/shared/hive';
 import { Inspection } from 'src/shared/inspection';
@@ -14,6 +15,7 @@ import { InspectionNote } from 'src/shared/inspectionNote';
 })
 export class AddInspectionComponent implements OnInit {
   private _router: Router = inject(Router)
+  private _document: Document = inject(DOCUMENT)
   constructor(private dataService:DataService){}
   async ngOnInit(): Promise<void> {
     this.hives = await this.dataService.getActiveHives();
@@ -59,6 +61,7 @@ export class AddInspectionComponent implements OnInit {
       noEggsOrBrood: []
     });
     this.hiveForms.push(hnForm)
+    setTimeout(() => this._document.documentElement.scrollTo(0, this._document.documentElement.scrollHeight));
   }
 
   removeHiveNote(hnIndex: number){
