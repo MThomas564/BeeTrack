@@ -45,7 +45,7 @@ export class EditInspectionComponent implements OnInit {
       for (const note of notes) {
         const matchingHive = this.hives.find(h => h.id === note.hive?.id) || note.hive;
         const hnForm = this.fb.group({
-          hive: [matchingHive],
+          hive: [matchingHive, Validators.required],
           notes: [note.notes],
           queen: [note.queen],
           eggs: [note.eggs],
