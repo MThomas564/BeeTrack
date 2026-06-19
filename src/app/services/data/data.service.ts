@@ -84,11 +84,14 @@ export class DataService {
   }
 
   async updateInspection(inspection: Inspection, inspectionNotes: Partial<InspectionNote>[]) {
-    await this.inspectionRepo.update(inspection.id, inspection);
-    const existingNotes = await this.inspectionNoteRepo.find({ where: { inspection: inspection } });
+    const { inspectionDate, notes } = inspection;
+    await this.inspectionRepo.update(inspection.id, { inspectionDate, notes });
+
+    const existingNotes = await this.inspectionNoteRepo.find({ where: { inspection } });
     for (const note of existingNotes) {
       await this.inspectionNoteRepo.delete(note);
     }
+
     for (const note of inspectionNotes) {
       await this.inspectionRepo.relations(inspection).inspectionNotes.insert(note);
     }
