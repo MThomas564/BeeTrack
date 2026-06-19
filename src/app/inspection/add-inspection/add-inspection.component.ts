@@ -60,10 +60,17 @@ export class AddInspectionComponent implements OnInit {
       supercedureCells: [],
       noEggsOrBrood: []
     });
+    const shouldScroll = this.hiveForms.length > 0
     this.hiveForms.push(hnForm)
-    setTimeout(() =>
-      this._document.documentElement.scrollTo({ top: this._document.documentElement.scrollHeight, behavior: 'smooth' })
-    , 0);
+
+    if (shouldScroll) {
+      const scrollingElement = this._document.scrollingElement ?? this._document.documentElement
+      if (scrollingElement && typeof scrollingElement.scrollTo === 'function') {
+        setTimeout(() =>
+          scrollingElement.scrollTo({ top: scrollingElement.scrollHeight, behavior: 'smooth' })
+        , 0);
+      }
+    }
   }
 
   removeHiveNote(hnIndex: number){
