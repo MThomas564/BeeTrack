@@ -63,25 +63,30 @@ describe('AddInspectionComponent', () => {
 
   it('scrolls to bottom of page after addHiveNote is called', async () => {
     jest.useFakeTimers();
-    Object.defineProperty(document.documentElement, 'scrollTo', {
+
+    const scrollElement = document.scrollingElement ?? document.documentElement
+    Object.defineProperty(scrollElement, 'scrollTo', {
       value: jest.fn(),
       writable: true,
       configurable: true,
     });
-    const scrollToSpy = jest.spyOn(document.documentElement, 'scrollTo');
+    const scrollToSpy = jest.spyOn(scrollElement, 'scrollTo');
 
-    const fixture = await createComponent();
-    scrollToSpy.mockClear();
+    try {
+      const fixture = await createComponent();
+      scrollToSpy.mockClear();
 
-    fixture.componentInstance.addHiveNote();
-    jest.runAllTimers();
+      fixture.componentInstance.addHiveNote();
+      jest.runOnlyPendingTimers();
 
-    expect(scrollToSpy).toHaveBeenCalledWith(
-      expect.objectContaining({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
-    );
-
-    jest.useRealTimers();
-    scrollToSpy.mockRestore();
+      expect(scrollToSpy).toHaveBeenCalledTimes(1);
+      expect(scrollToSpy).toHaveBeenCalledWith(
+        expect.objectContaining({ top: scrollElement.scrollHeight, behavior: 'smooth' })
+      );
+    } finally {
+      scrollToSpy.mockRestore();
+      jest.useRealTimers();
+    }
   });
 
   it('removes a hive note when removeHiveNote is called', async () => {
