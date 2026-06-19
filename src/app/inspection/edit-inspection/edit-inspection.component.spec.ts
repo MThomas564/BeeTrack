@@ -49,12 +49,28 @@ describe('EditInspectionComponent', () => {
     expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('initializes the inspection form with date and note controls', async () => {
+  it('loads the inspection and patches the form', async () => {
     const fixture = TestBed.createComponent(EditInspectionComponent);
+    fixture.detectChanges();
     await fixture.whenStable();
+
+    expect(mockDataService.getHives).toHaveBeenCalled();
+    expect(mockDataService.getInspection).toHaveBeenCalledWith('1');
+
     const component = fixture.componentInstance;
-    expect(component.inspectionForm.controls['date']).toBeTruthy();
-    expect(component.inspectionForm.controls['note']).toBeTruthy();
-    expect(component.inspectionForm.controls['hiveNotes']).toBeTruthy();
+    expect(component.inspectionForm.controls['note'].value).toBe('test notes');
   });
-});
+
+  it('submits the inspection form and navigates away', async () => {
+    const fixture = TestBed.createComponent(EditInspectionComponent);
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const router = TestBed.inject(Router);
+    jest.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
+
+    await fixture.componentInstance.submit();
+
+    expect(mockDataService.updateInspection).toHaveBeenCalled();
+    expect(router.navigateByUrl).toHaveBeenCalledWith('inspections');
+  });
