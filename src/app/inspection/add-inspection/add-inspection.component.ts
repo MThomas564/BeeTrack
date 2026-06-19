@@ -19,7 +19,7 @@ export class AddInspectionComponent implements OnInit {
   constructor(private dataService:DataService){}
   async ngOnInit(): Promise<void> {
     this.hives = await this.dataService.getActiveHives();
-    this.addHiveNote();
+    this.addHiveNote({ scroll: false });
   }
 
   hives: Hive[] = [];
@@ -49,7 +49,7 @@ export class AddInspectionComponent implements OnInit {
 
   }
 
-  addHiveNote(){
+  addHiveNote({ scroll = true } = {}){
     const hnForm = this.fb.group({
       hive: [''],
       notes: [''],
@@ -61,9 +61,11 @@ export class AddInspectionComponent implements OnInit {
       noEggsOrBrood: []
     });
     this.hiveForms.push(hnForm)
-    setTimeout(() =>
-      this._document.documentElement.scrollTo({ top: this._document.documentElement.scrollHeight, behavior: 'smooth' })
-    , 0);
+    if (scroll) {
+      setTimeout(() =>
+        this._document.documentElement.scrollTo({ top: this._document.documentElement.scrollHeight, behavior: 'smooth' })
+      , 0);
+    }
   }
 
   removeHiveNote(hnIndex: number){
