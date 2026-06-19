@@ -75,14 +75,14 @@ export class EditInspectionComponent implements OnInit {
 
   addHiveNote() {
     const hnForm = this.fb.group({
-      hive: [''],
+      hive: [null, Validators.required],
       notes: [''],
-      queen: [],
-      eggs: [],
-      bias: [],
-      swarmCells: [],
-      supercedureCells: [],
-      noEggsOrBrood: []
+      queen: [false],
+      eggs: [false],
+      bias: [false],
+      swarmCells: [false],
+      supercedureCells: [false],
+      noEggsOrBrood: [false]
     });
     this.hiveForms.push(hnForm);
   }
