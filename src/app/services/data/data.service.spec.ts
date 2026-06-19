@@ -102,6 +102,29 @@ describe('DataService', () => {
       expect(fetched.inspectionNotes![0].queen).toBe(true);
     });
 
+    it('updates an inspection and replaces existing hive notes', async () => {
+      const firstHive = await service.addHive({ name: 'Hive 1', archived: false });
+      const secondHive = await service.addHive({ name: 'Hive 2', archived: false });
+      const inspection = await service.addInspectAndNotes(
+        { inspectionDate: new Date('2024-06-01'), notes: 'Original notes' },
+        [{ hive: firstHive, notes: 'Old hive note', queen: true }]
+      );
+
+      inspection.inspectionDate = new Date('2024-06-02');
+      inspection.notes = 'Updated notes';
+      await service.updateInspection(inspection, [{ hive: secondHive, notes: 'New hive note', queen: false }]);
+
+      const updatedInspection = await service.getInspection(inspection.id);
+      expect(updatedInspection.inspectionDate).toEqual(new Date('2024-06-02'));
+      expect(updatedInspection.notes).toBe('Updated notes');
+      expect(updatedInspection.inspectionNotes).toHaveLength(1);
+      expect(updatedInspection.inspectionNotes![0].hive.id).toBe(secondHive.id);
+      expect(updatedInspection.inspectionNotes![0].notes).toBe('New hive note');
+
+      const firstHiveNotes = await service.getInspectionNotesByHive(firstHive.id);
+      expect(firstHiveNotes).toHaveLength(0);
+    });
+
     it('deletes inspection and its notes', async () => {
       const hive = await service.addHive({ name: 'Test Hive', archived: false });
       const inspect = await service.addInspectAndNotes(
