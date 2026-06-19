@@ -40,6 +40,7 @@ import { EditHarvestComponent } from './harvest/edit-harvest/edit-harvest.compon
 import { AddSaleComponent } from './sales/add-sale/add-sale.component';
 import { SalesComponent } from './sales/sales/sales.component';
 import { EditSaleComponent } from './sales/edit-sale/edit-sale.component';
+import { EditInspectionComponent } from './inspection/edit-inspection/edit-inspection.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { providePrimeNG } from 'primeng/config';
 import { definePreset } from '@primeuix/themes';
@@ -70,6 +71,7 @@ const routes: Routes = [
   , { path: 'hives/edit/:id', component: EditHiveComponent }
   , { path: 'inspections', component: InspectionsComponent }
   , { path: 'inspections/add', component: AddInspectionComponent }
+  , { path: 'inspections/edit/:id', component: EditInspectionComponent }
   , { path: 'inspections/:id', component: ViewInspectionComponent }
   , { path: 'harvests', component: HarvestsComponent }
   , { path: 'harvests/add', component: AddHarvestComponent }
@@ -97,7 +99,8 @@ const routes: Routes = [
         EditHarvestComponent,
         SalesComponent,
         AddSaleComponent,
-        EditSaleComponent
+        EditSaleComponent,
+        EditInspectionComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         CommonModule,
