@@ -53,6 +53,7 @@ describe('EditInspectionComponent', () => {
     const fixture = TestBed.createComponent(EditInspectionComponent);
     fixture.detectChanges();
     await fixture.whenStable();
+    await fixture.whenStable();
 
     expect(mockDataService.getHives).toHaveBeenCalled();
     expect(mockDataService.getInspection).toHaveBeenCalledWith('1');
@@ -74,3 +75,4 @@ describe('EditInspectionComponent', () => {
     expect(mockDataService.updateInspection).toHaveBeenCalled();
     expect(router.navigateByUrl).toHaveBeenCalledWith('inspections');
   });
+});
